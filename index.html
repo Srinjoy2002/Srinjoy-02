@@ -9,14 +9,20 @@
     <link rel="icon" href="favicon.ico" type="image/x-icon">
 
     <style>
+        /* Reset margins and padding */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Roboto', sans-serif;
             background-color: #f5f5f5;
             color: #333;
-            margin: 0;
-            padding: 0;
             scroll-behavior: smooth;
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         .navbar {
@@ -28,12 +34,11 @@
             top: 0;
             z-index: 1000;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            width: 100%;
         }
 
         .navbar ul {
             list-style: none;
-            padding: 0;
-            margin: 0;
             display: flex;
         }
 
@@ -57,18 +62,17 @@
             display: none;
             flex-direction: column;
             align-items: center;
+            width: 100%;
         }
 
         .hamburger {
             display: none;
             font-size: 24px;
-            color: #000000;
+            color: #ffffff;
             cursor: pointer;
-            position: absolute;
-            right: 20px;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 720px) {
             .navbar ul {
                 display: none;
             }
@@ -134,7 +138,6 @@
             background-color: #444;
             color: #fff;
             position: relative;
-            bottom: 0;
             width: 100%;
         }
 
@@ -154,6 +157,26 @@
 
         .contact-icons a:hover {
             color: #1e1e2f;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        #github-contributions {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            overflow-x: auto;
+            max-width: 100%;
+        }
+
+        #github-contributions h2 {
+            color: #333;
         }
     </style>
     <script>
@@ -204,30 +227,38 @@
     <section id="experience">
         <h2>Experience</h2>
         <div class="about">
-            <h3>Summer Research Intern</h3>
-            <p>Indian Institute of Technology, Guwahati | June 2024 - July 2024</p>
-            <ul>
+            <h3 style="margin-top: 20px;">Summer Research Intern</h3>
+            <p style="margin-bottom: 10px;">Indian Institute of Technology, Guwahati | June 2024 - July 2024</p>
+            <ul style="margin-left: 20px; margin-bottom: 30px;">
                 <li>Transformed 2D images into scalable 3D point clouds with 92% scaling accuracy.</li>
-                <!-- <li>Developed an image processing pipeline that extracts in-focus regions from 2D images, resulting in high-quality 3D point clouds with improved detail preservation.</li>
-                <li>Implemented mask generation and focus stacking techniques using Mask R-CNN and Laplacian edge detection algorithms to enhance image quality for composite 3D reconstruction.</li>
-                <li>Optimized the creation of detailed 3D point clouds using OpenCV techniques for exact image alignment and fusion, including brute-force matching and SIFT.</li> -->
             </ul>
-
-            <h3>Summer Research Intern</h3>
-            <p>National Institute of Technology, Durgapur | June 2023 - July 2023</p>
-            <ul>
+    
+            <h3 style="margin-top: 20px;">Summer Research Intern</h3>
+            <p style="margin-bottom: 10px;">National Institute of Technology, Durgapur | June 2023 - July 2023</p>
+            <ul style="margin-left: 20px; margin-bottom: 30px;">
                 <li>Developed nodes and launch files for an Autonomous Differential Bot using SLAM.</li>
                 <li>Tech Stack: ROS, SLAM, Gazebo, Python, C++, Arduino IDE.</li>
             </ul>
-
-            <h3>Winter Intern</h3>
-            <p>Indian Railways, Alipurduar Junction | Jan 2023 - Feb 2023</p>
-            <ul>
+    
+            <h3 style="margin-top: 20px;">Winter Intern</h3>
+            <p style="margin-bottom: 10px;">Indian Railways, Alipurduar Junction | Jan 2023 - Feb 2023</p>
+            <ul style="margin-left: 20px; margin-bottom: 30px;">
                 <li>Worked on the maintenance and operation of transformers, synchronization panels, water pumps, and diesel generators.</li>
-                <li>Performed troubleshooting for synchronization panels and diesel generator sets.</li>
             </ul>
         </div>
     </section>
+    
+
+    <section id="github-contributions">
+        <h2>GitHub Contributions</h2>
+        <p>Check out my GitHub activity below!</p>
+        <div align="center">
+            <img src="https://streak-stats.demolab.com?user=Srinjoy2002&locale=en&mode=daily&theme=default&hide_border=false&border_radius=5&order=3" 
+                 height="150" alt="GitHub Streak Stats" />
+            <img src="https://github-readme-activity-graph.vercel.app/graph?username=Srinjoy2002&radius=16&theme=github-light&area=true&order=5" 
+                 height="300" alt="GitHub Activity Graph" />
+        </div>
+    </section>   
 
     <section id="contact">
         <h2>Contact Me</h2>
