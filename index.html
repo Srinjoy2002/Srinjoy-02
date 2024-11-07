@@ -184,18 +184,8 @@
             const mobileMenu = document.querySelector('.navbar ul.mobile');
             mobileMenu.classList.toggle('show');
         }
-        window.onload = function() {
-             // Fetch the view count from the PHP script
-            fetch('portfolio_web\view_counter.php')
-                .then(response => response.text())
-                .then(data => {
-            // Update the view count in the footer
-                    document.getElementById('view-count').innerText = data;
-                })
-                .catch(error => {
-                    console.error('Error fetching view count:', error);
-                });
-};
+        
+
 
     </script>
 </head>
