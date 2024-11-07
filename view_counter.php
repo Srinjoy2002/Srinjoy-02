@@ -1,5 +1,5 @@
 <?php
-$file = "view_count.txt";
+$file = "portfolio_web\view_count.txt";
 
 // Read the current count
 $count = file_get_contents($file);
