@@ -6,8 +6,8 @@ import random
 # Configuration
 start_date = datetime(2024, 11, 10)
 end_date = datetime(2024, 12, 26)
-file_name = "dummy_contribution.txt"
-gap_days = 2
+file_name = "contribution.txt"
+gap_days = 1
 
 # Get repository path
 repo_path = "D:\\clg\\website\\portfolio_web"
