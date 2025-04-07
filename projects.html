@@ -1,205 +1,222 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Srinjoy Chakraborty - Projects</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #f5f5f5; 
-            color: #333; 
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Srinjoy Chakraborty - Projects</title>
 
-        .navbar {
-            display: flex;
-            justify-content: center;
-            background-color: #444; 
-            padding: 15px 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); 
-        }
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet"/>
 
-        .navbar ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            flex-wrap: wrap; 
-        }
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
 
-        .navbar li {
-            margin: 0 20px;
-        }
+  <!-- AOS Animation Library -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
-        .navbar a {
-            color: #fff; 
-            text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s ease;
-        }
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        .navbar a:hover {
-            color: #00FFC3; 
-        }
+    html {
+      scroll-behavior: smooth;
+    }
 
-        section {
-            padding: 60px 20px;
-            text-align: center;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #1e1f26;
+      color: #e0e0e0;
+      line-height: 1.6;
+    }
 
-        section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            color: #333; 
-        }
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: rgba(30, 31, 38, 0.95);
+      padding: 15px 20px;
+      z-index: 1000;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
 
-        .project {
-            text-align: left;
-            background-color: #fff; 
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
-            margin-bottom: 30px; 
-        }
+    .navbar ul {
+      list-style: none;
+      display: flex;
+    }
 
-        .project img {
-            width: 100%; 
-            height: auto; 
-            border-radius: 8px; 
-            margin-bottom: 15px; 
-        }
+    .navbar li {
+      margin: 0 20px;
+    }
 
-        .project a {
-            color: #00FFC3; 
-            text-decoration: none;
-        }
+    .navbar a {
+      color: #e0e0e0;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
 
-        .project a:hover {
-            text-decoration: underline; 
-        }
+    .navbar a:hover {
+      color: #00FFC3;
+    }
 
-        footer {
-            text-align: center;
-            padding: 20px;
-            background-color: #444; 
-            color: #fff; 
-        }
+    section {
+      padding: 100px 20px 60px;
+      max-width: 1000px;
+      margin: 100px auto;
+      background-color: rgba(40, 44, 52, 0.95);
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+      transition: transform 0.3s ease;
+    }
 
-        @media (max-width: 768px) {
-            section {
-                padding: 30px 10px;
-            }
+    section:hover {
+      transform: translateY(-5px);
+    }
 
-            section h2 {
-                font-size: 2rem;
-            }
+    section h2 {
+      font-size: 2.5rem;
+      color: #00FFC3;
+      margin-bottom: 30px;
+      border-bottom: 2px solid #00FFC3;
+      display: inline-block;
+      padding-bottom: 8px;
+    }
 
-            .navbar ul {
-                flex-direction: column; 
-                align-items: center; 
-            }
+    .project {
+      margin-bottom: 50px;
+      text-align: left;
+      background-color: #2e3039;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease;
+    }
 
-            .navbar li {
-                margin: 10px 0; 
-            }
+    .project:hover {
+      transform: translateY(-3px);
+    }
 
-            .project {
-                padding: 15px; 
-            }
+    .project img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      border: 2px solid #00FFC3;
+    }
 
-            .project h3 {
-                font-size: 1.5rem; 
-            }
+    .project h3 {
+      color: #00FFC3;
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
 
-            .project p {
-                font-size: 0.9rem; 
-            }
-        }
+    .project p {
+      font-size: 1rem;
+      margin-bottom: 10px;
+      color: #ccc;
+    }
 
-        @media (max-width: 480px) {
-            section {
-                padding: 20px 5px;
-            }
+    .project a {
+      color: #00FFC3;
+      text-decoration: none;
+      font-weight: bold;
+    }
 
-            section h2 {
-                font-size: 1.5rem;
-            }
+    .project a:hover {
+      text-decoration: underline;
+    }
 
-            .navbar li {
-                margin: 5px 0; 
-            }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #1e1f26;
+      color: #aaa;
+      font-size: 0.9rem;
+    }
 
-            .project h3 {
-                font-size: 1.3rem; 
-            }
+    @media (max-width: 768px) {
+      section {
+        padding: 50px 15px;
+        margin: 80px 10px;
+      }
 
-            .project p {
-                font-size: 0.8rem; 
-            }
-        }
-    </style>
+      section h2 {
+        font-size: 2rem;
+      }
+
+      .project h3 {
+        font-size: 1.4rem;
+      }
+    }
+  </style>
 </head>
 <body>
-    <nav class="navbar">
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="#projects">Projects</a></li>
-        </ul>
-    </nav>
 
-    <section id="projects">
-        <h2>My Projects</h2>
-        
-        <div class="project">
-            <h3>SLAMDrive UAV</h3>
-            <img src="images\project_uav.jpg" alt="SLAMDrive UAV Project">
-            <p>
-                Engineered an autonomous UAV leveraging RetinaNET for weed detection in potato farms (89% accuracy) and human surveillance (97% accuracy) using real-time image processing and mapping. Devised a custom aerodynamic compensation algorithm via the AirSim Python API, optimizing fertilizer dispersal in windy conditions and achieving 97% path traversal rectification accuracy. Simulated complex operational environments using AirSim and ROS2 to validate real-time performance. Integrated Dijkstra’s algorithm and the Bendy Ruler technique for efficient path planning, incorporating Hector SLAM for dynamic mapping and obstacle avoidance, and programmed automated takeoff, landing, and Return-to-Home (RTH) functions.
-            </p>
-            <p>GitHub: <a href="https://github.com/serbeeq8/iotuav" target="_blank"><i class="fab fa-github"></i> Repository</a></p>
-        </div>
+  <nav class="navbar">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="#projects">Projects</a></li>
+    </ul>
+  </nav>
 
-        <div class="project">
-            <h3>LSTM-RNN based Emotion Detection System</h3>
-            <img src="images\Screenshot 2025-02-04 000550.png" alt="LSTM-RNN based Emotion Detection System Project">
-            <p>
-                Engineered a comprehensive preprocessing pipeline using ICA for artifact removal, bandpass/notch filtering, and min-max normalization to significantly enhance EEG signal quality. Constructed and optimized an LSTM-RNN model for real-time emotion recognition, achieving 90.9% test accuracy on the SEED-IV dataset by leveraging temporal EEG dependencies and fine-tuning hyperparameters with TensorFlow/Keras.
-            </p>
-            <p>GitHub: <a href="https://github.com/Srinjoy2002/eeg_classify" target="_blank"><i class="fab fa-github"></i> Repository</a></p>
-        </div>
+  <section id="projects">
+    <h2 data-aos="fade-down">My Projects</h2>
 
-        <div class="project">
-            <h3>Holonomic Drive Bot</h3>
-            <img src="images/project_drive.jpg" alt="Holonomic Drive Bot Project">
-            <p>
-                Engineered and coordinated a fleet of three holonomic drive robots to autonomously render large glyphs on an 8 ft x 8 ft arena. Employed overhead camera localization and Aruco markers for precise navigation.
-            </p>
-            <p>GitHub: <a href="https://github.com/Srinjoy2002/eyrc_HB_3636" target="_blank"><i class="fab fa-github"></i> Repository</a></p>
-        </div>
-        
-        <div class="project">
-            <h3>Self-Balancing Bot</h3>
-            <img src="images/project_sbb.png" alt="Self-Balancing Bot Project">
-            <p>
-                Developed a self-balancing bot utilizing the LQR algorithm, enabling robust traversal of steep slopes and sharp turns.
-            </p>
-            <p>GitHub: <a href="https://github.com/Srinjoy2002/self-balancing-bot" target="_blank"><i class="fab fa-github"></i> Repository</a></p>
-        </div>
-        
-    </section>
+    <div class="project" data-aos="fade-up">
+      <h3>SLAMDrive UAV</h3>
+      <img src="images/project_uav.jpg" alt="SLAMDrive UAV">
+      <p>
+        Engineered an autonomous UAV leveraging RetinaNET for weed detection in potato farms (89% accuracy) and human surveillance (97% accuracy) using real-time image processing and mapping...
+      </p>
+      <p>GitHub: <a href="https://github.com/serbeeq8/iotuav" target="_blank"><i class="fab fa-github"></i> Repository</a></p>
+    </div>
 
-    <footer>
-        <p>&copy; 2024 Srinjoy Chakraborty. All rights reserved.</p>
-    </footer>
+    <div class="project" data-aos="fade-up">
+      <h3>LSTM-RNN based Emotion Detection System</h3>
+      <img src="images/Screenshot 2025-02-04 000550.png" alt="Emotion Detection System">
+      <p>
+        Engineered a preprocessing pipeline using ICA, bandpass filtering, and LSTM-RNN for emotion detection on EEG...
+      </p>
+      <p>GitHub: <a href="https://github.com/Srinjoy2002/eeg_classify" target="_blank"><i class="fab fa-github"></i> Repository</a></p>
+    </div>
+
+    <div class="project" data-aos="fade-up">
+      <h3>Holonomic Drive Bot</h3>
+      <img src="images/project_drive.jpg" alt="Holonomic Drive Bot">
+      <p>
+        Coordinated a fleet of holonomic bots for glyph rendering using camera localization and Aruco markers...
+      </p>
+      <p>GitHub: <a href="https://github.com/Srinjoy2002/eyrc_HB_3636" target="_blank"><i class="fab fa-github"></i> Repository</a></p>
+    </div>
+
+    <div class="project" data-aos="fade-up">
+      <h3>Self-Balancing Bot</h3>
+      <img src="images/project_sbb.png" alt="Self-Balancing Bot">
+      <p>
+        Developed a self-balancing bot with LQR for steep slope traversal...
+      </p>
+      <p>GitHub: <a href="https://github.com/Srinjoy2002/self-balancing-bot" target="_blank"><i class="fab fa-github"></i> Repository</a></p>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2024 Srinjoy Chakraborty. All rights reserved.</p>
+  </footer>
+
+  <!-- AOS Script -->
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 1000,
+      once: true
+    });
+  </script>
+
 </body>
 </html>
