@@ -1,364 +1,449 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Srinjoy Chakraborty</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Srinjoy Chakraborty</title>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet"/>
+  
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
+  
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.ico" type="image/x-icon"/>
+  
+  <!-- AOS for scroll animations -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
-    <style>
-        /* Reset margins and padding */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <!-- Particles.js -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+  
+  <!-- Typed.js for typing animation -->
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #1e1f26; /* Dark background */
+      color: #e0e0e0;           /* Light text */
+      scroll-behavior: smooth;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    
+    /* Navbar */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(30, 31, 38, 0.95);
+      padding: 15px 20px;
+      z-index: 1000;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+    .navbar ul {
+      list-style: none;
+      display: flex;
+    }
+    .navbar li {
+      margin: 0 20px;
+    }
+    .navbar a {
+      color: #e0e0e0;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+    .navbar a:hover {
+      color: #00FFC3;
+    }
+    .hamburger {
+      display: none;
+      font-size: 24px;
+      color: #e0e0e0;
+      cursor: pointer;
+    }
+    .navbar ul.mobile {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+    @media (max-width: 720px) {
+      .navbar ul {
+        display: none;
+      }
+      .hamburger {
+        display: block;
+      }
+      .navbar ul.mobile.show {
+        display: flex;
+      }
+    }
 
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #f5f5f5;
-            color: #333;
-            scroll-behavior: smooth;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
+    /* Hero Section */
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start; /* Align to left */
+      height: 100vh;              /* Full viewport height */
+      padding-top: 80px;          /* Avoid navbar overlap */
+      padding-left: 5vw;          /* Space on the left */
+      z-index: 1;                 /* Above the particle background */
+      /* Remove background box for hero */
+      background: none;
+      box-shadow: none;
+      border-radius: 0;
+    }
+    .hero-content {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 30px;
+    }
+    .hero-image {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #00FFC3;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+    .hero-name {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #00FFC3;
+      margin: 0;
+    }
+    .typed-cursor {
+      color: #00FFC3;
+      font-weight: bold;
+    }
+    
+    /* Default Section Styles */
+    section {
+      padding: 80px 20px 60px;
+      text-align: center;
+      max-width: 800px;
+      margin: 80px auto;
+      background-color: rgba(40, 44, 52, 0.95);
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+      transition: transform 0.3s ease;
+    }
+    section:hover {
+      transform: translateY(-5px);
+    }
+    section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #00FFC3;
+      border-bottom: 2px solid #00FFC3;
+      display: inline-block;
+      padding-bottom: 5px;
+    }
+    
+    /* Exclude the .hero from these styles */
+    .hero section {
+      background: none;
+      box-shadow: none;
+    }
+    
+    /* About, Experience, Education */
+    .about, .experience, .education {
+      text-align: left;
+      margin: 20px auto;
+    }
+    .about h3, .experience h3, .education h3 {
+      margin-top: 20px;
+      margin-bottom: 10px;
+      font-size: 1.5rem;
+      color: #00FFC3;
+    }
+    .about p, .experience p, .education p {
+      margin-bottom: 10px;
+    }
+    .about ul, .experience ul, .education ul {
+      margin-left: 20px;
+      margin-bottom: 30px;
+      font-size: 1rem;
+    }
+    
+    /* GitHub Contributions */
+    #github-contributions {
+      background-color: #282c34;
+      padding: 40px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      overflow-x: auto;
+      max-width: 100%;
+      margin-bottom: 40px;
+    }
+    #github-contributions h2 {
+      color: #00FFC3;
+    }
+    
+    /* Contact Section */
+    #contact .contact-icons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 20px 0;
+    }
+    #contact .contact-icons a {
+      color: #00FFC3;
+      margin: 0 15px;
+      font-size: 24px;
+      transition: color 0.3s ease;
+    }
+    #contact .contact-icons a:hover {
+      color: #1e1e2f;
+    }
 
-        .navbar {
-            display: flex;
-            justify-content: center;
-            background-color: #444;
-            padding: 15px 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-            width: 100%;
-        }
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #222;
+      color: #fff;
+      width: 100%;
+    }
 
-        .navbar ul {
-            list-style: none;
-            display: flex;
-        }
-
-        .navbar li {
-            margin: 0 20px;
-        }
-
-        .navbar a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s ease;
-        }
-
-        .navbar a:hover {
-            color: #00FFC3;
-        }
-
-        /* Responsive Menu */
-        .navbar ul.mobile {
-            display: none;
-            flex-direction: column;
-            align-items: center;
-            width: 100%;
-        }
-
-        .hamburger {
-            display: none;
-            font-size: 24px;
-            color: #ffffff;
-            cursor: pointer;
-        }
-
-        @media (max-width: 720px) {
-            .navbar ul {
-                display: none;
-            }
-            .hamburger {
-                display: block;
-            }
-            .navbar ul.mobile.show {
-                display: flex;
-            }
-        }
-
-        /* Section Styles */
-        section {
-            padding: 60px 20px;
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            color: #333;
-        }
-
-        .about, .experience, .education {
-            text-align: left;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            margin-bottom: 30px;
-            transition: transform 0.3s ease;
-        }
-
-        .about:hover, .experience:hover, .education:hover {
-            transform: translateY(-5px);
-        }
-
-        .contact-button {
-            background-color: #00FFC3;
-            color: #1e1e2f;
-            border: none;
-            border-radius: 5px;
-            padding: 10px 20px;
-            font-size: 16px;
-            margin: 10px;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .contact-button:hover {
-            background-color: #00e5b2;
-            transform: scale(1.05);
-        }
-
-        /* Footer Styles */
-        footer {
-            text-align: center;
-            padding: 20px;
-            background-color: #444;
-            color: #fff;
-            position: relative;
-            width: 100%;
-        }
-
-        /* Contact Icons */
-        .contact-icons {
-            display: flex;
-            justify-content: center;
-            margin: 20px 0;
-        }
-
-        .contact-icons a {
-            color: #00FFC3;
-            margin: 0 15px;
-            font-size: 24px;
-            transition: color 0.3s ease;
-        }
-
-        .contact-icons a:hover {
-            color: #1e1e2f;
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-            margin: 0 auto;
-        }
-
-        #github-contributions {
-            background-color: #ffffff;
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            overflow-x: auto;
-            max-width: 100%;
-        }
-
-        #github-contributions h2 {
-            color: #333;
-        }
-    </style>
-
-    <script>
-        function toggleMenu() {
-            const mobileMenu = document.querySelector('.navbar ul.mobile');
-            mobileMenu.classList.toggle('show');
-        }
-    </script>
-
-    <!-- Vercel Analytics Script
-    <script async src="https://cdn.vercel.live/analytics.js"></script> -->
-
+    /* Particles.js container */
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      top: 0;
+      left: 0;
+    }
+  </style>
+  
+  <script>
+    function toggleMenu() {
+      const mobileMenu = document.querySelector('.navbar ul.mobile');
+      mobileMenu.classList.toggle('show');
+    }
+  </script>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="hamburger" onclick="toggleMenu()">
-            <i class="fas fa-bars"></i>
-        </div>
-        <ul>
-            <li><a href="#about">About Me</a></li>
-            <li><a href="#education">Education</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="projects.html">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-        <ul class="mobile">
-            <li><a href="#about">About Me</a></li>
-            <li><a href="#education">Education</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="projects.html">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
+  <!-- Particles.js container -->
+  <div id="particles-js"></div>
 
-    <section id="about">
-        <h2>About Me</h2>
-        <p>I'm Srinjoy Chakraborty, a passionate robotics and tech enthusiast with a focus on robotic technologies and automation. I enjoy creating innovative solutions to complex problems and am constantly looking for opportunities to expand my knowledge and skills.</p>
-        <a href="CV_Srinjoy.pdf" target="_blank">
-            <i class="fas fa-file-pdf"></i> View My Resume
-        </a>    
-    </section>
+  <!-- Navbar -->
+  <nav class="navbar" data-aos="fade-down">
+    <div class="hamburger" onclick="toggleMenu()">
+      <i class="fas fa-bars"></i>
+    </div>
+    <ul>
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#about">About Me</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <ul class="mobile">
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#about">About Me</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
 
-    <section id="education">
-        <h2>Education</h2>
-        <div class="education">
-            <h3>Sant Longowal Institute of Engineering and Technology (SLIET)</h3>
-            <p>B.E. in Electrical Engineering</p>
-            <p>Sangrur, Punjab | Nov 2021 - Present</p>
-        </div>
-    </section>
+  <!-- Hero Section -->
+  <section class="hero" id="hero" data-aos="fade-up">
+    <div class="hero-content">
+      <!-- Profile Image -->
+      <img src="profile.jpg" alt="Profile Photo" class="hero-image" />
+      
+      <!-- Typed text container -->
+      <h1 class="hero-name">
+        <span id="typed"></span>
+      </h1>
+    </div>
+  </section>
 
-    <section id="experience">
-        <h2>Experience</h2>
-        <div class="about">
-            <h3 style="margin-top: 20px;">Undergraduate Research Project Intern</h3>
-            <p style="margin-bottom: 10px;">Indian Institute of Technology, Guwahati | Jan 2025 - Present</p>
-            <ul style="margin-left: 20px; margin-bottom: 30px;">
-                <li>Creating an automated focus-stacking and inspection system for micro-machined surfaces and precision tools by integrating high-precision mechatronics, real-time feedback control, and custom software—resulting in precise 3D reconstructions and scalable measurements.</li>
-                <li>Refining focus-stacking algorithms and implementing precise control mechanisms, significantly boosting the accuracy and efficiency of 3D point cloud generation.</li>
-            </ul>
+  <!-- About Section -->
+  <section id="about" data-aos="fade-up">
+    <h2>About Me</h2>
+    <p>I'm Srinjoy Chakraborty, a passionate robotics and tech enthusiast with a focus on robotic technologies and automation. I enjoy creating innovative solutions to complex problems and am constantly looking for opportunities to expand my knowledge and skills.</p>
+    <a href="CV_Srinjoy.pdf" target="_blank">
+      <i class="fas fa-file-pdf"></i> View My Resume
+    </a>
+  </section>
 
-            <h3 style="margin-top: 20px;">Summer Research Intern</h3>
-            <p style="margin-bottom: 10px;">Indian Institute of Technology, Guwahati | Jun 2024 - Dec 2024</p>
-            <ul style="margin-left: 20px; margin-bottom: 30px;">
-                <li>Converted 2D images into scalable 3D point clouds, achieving a 92% scaling accuracy.</li>
-                <li>Engineered an image processing pipeline to isolate in-focus regions, thereby enhancing the quality of 3D reconstructions.</li>
-                <li>Deployed Mask R-CNN and Laplacian edge detection algorithms to generate accurate masks and execute focus stacking, improving composite 3D image quality.</li>
-                <li>Leveraged OpenCV for optimizing image alignment and fusion by employing brute-force matching and SIFT techniques.</li>
-            </ul>
+  <!-- Education Section -->
+  <section id="education" data-aos="fade-up">
+    <h2>Education</h2>
+    <div class="education">
+      <h3>Sant Longowal Institute of Engineering and Technology (SLIET)</h3>
+      <p>B.E. in Electrical Engineering</p>
+      <p>Sangrur, Punjab | Nov 2021 - Present</p>
+    </div>
+  </section>
 
-            <h3 style="margin-top: 20px;">Summer Research Intern</h3>
-            <p style="margin-bottom: 10px;">National Institute of Technology, Durgapur | Jun 2023 - Jul 2023</p>
-            <ul style="margin-left: 20px; margin-bottom: 30px;">
-                <li>Developed nodes and launch files for an Autonomous Differential Bot using SLAM.</li>
-                <li>Tech Stack: ROS, SLAM, Gazebo, Python, C++, Arduino IDE.</li>
-            </ul>
+  <!-- Experience Section -->
+  <section id="experience" data-aos="fade-up">
+    <h2>Experience</h2>
+    <div class="about">
+      <h3 style="margin-top: 20px;">Undergraduate Research Project Intern</h3>
+      <p style="margin-bottom: 10px;">Indian Institute of Technology, Guwahati | Jan 2025 - Present</p>
+      <ul style="margin-left: 20px; margin-bottom: 30px;">
+        <li>Creating an automated focus-stacking and inspection system for micro-machined surfaces and precision tools—resulting in precise 3D reconstructions and scalable measurements.</li>
+        <li>Refining focus-stacking algorithms and implementing precise control mechanisms to boost 3D point cloud generation accuracy and efficiency.</li>
+      </ul>
+      <!-- Add more experiences as needed -->
+    </div>
+  </section>
 
-            <h3 style="margin-top: 20px;">Winter Intern</h3>
-            <p style="margin-bottom: 10px;">Indian Railways, Alipurduar Junction | Jan 2023 - Feb 2023</p>
-            <ul style="margin-left: 20px; margin-bottom: 30px;">
-                <li>Worked on the maintenance and operation of transformers, synchronization panels, water pumps, and diesel generators.</li>
-                <li>Diagnosed and resolved technical issues in synchronization panels and DG sets, reducing system downtime.</li>
-            </ul>
-        </div>
-    </section>
+  <!-- GitHub Contributions Section -->
+  <section id="github-contributions" data-aos="fade-up">
+    <h2>GitHub Contributions</h2>
+    <p>Check out my GitHub activity below!</p>
+    <div align="center">
+      <img src="https://github-readme-stats.vercel.app/api?username=Srinjoy2002&hide_title=false&hide_rank=false&show_icons=true&include_all_commits=true&count_private=true&disable_animations=false&theme=dracula&locale=en&hide_border=false" height="150" alt="stats graph" />
+      <img src="https://github-readme-activity-graph.vercel.app/graph?username=Srinjoy2002&radius=16&theme=dracula&area=true&order=5" height="300" alt="activity-graph graph" />
+      <img src="https://github-readme-stats.vercel.app/api/top-langs?username=Srinjoy2002&locale=en&hide_title=false&layout=compact&card_width=320&langs_count=5&theme=dracula&hide_border=false" height="150" alt="languages graph" />
+    </div>
+  </section>
 
-    <!-- <section id="publications">
-        <h2>Publications</h2>
-        <div class="about">
-            <h3>DSDMA: Dynamic Spray Drift Mitigation Algorithm for Optimizing Spraying Drone Performance in Dynamic Agricultural Environments</h3>
-            <p><em>Transactions on Intelligent Systems and Technology (Under Review)</em></p>
-            <p>Authors: Goyal, R.; <strong>Chakraborty, S.</strong>; Nath, A.; Niranjan, U.</p>
-            <p><strong>Keywords:</strong> Precision Agriculture, UAV Trajectory Optimization, AirSim Simulation</p>
-            <p>Summary: Co-authored a research manuscript that introduces a novel algorithm to optimize spraying drone performance by dynamically mitigating spray drift in agricultural settings.</p>
-        </div>
-    </section> -->
+  <!-- Contact Section -->
+  <section id="contact" data-aos="fade-up">
+    <h2>Contact Me</h2>
+    <div class="contact-icons">
+      <a href="mailto:c02srinjoy@gmail.com"><i class="fas fa-envelope fa-lg"></i></a>
+      <a href="https://www.linkedin.com/in/srinjoysliet/" target="_blank"><i class="fab fa-linkedin fa-lg"></i></a>
+      <a href="https://github.com/Srinjoy2002" target="_blank"><i class="fab fa-github fa-lg"></i></a>
+      <a href="https://www.kaggle.com/srinjoy02" target="_blank"><i class="fab fa-kaggle fa-lg"></i></a>
+    </div>
+  </section>
 
-    <!-- <section id="projects">
-        <h2>Projects</h2>
-        <div class="about">
-            <h3>SLAMDrive UAV</h3>
-            <p><strong>Duration:</strong> May 2024 - Jan 2025</p>
-            <p><strong>Tech Stack:</strong> ROS2, Python, PyTorch, OpenCV, R-CNN, AirSim</p>
-            <ul style="margin-left: 20px; margin-bottom: 30px;">
-                <li>Engineered an autonomous UAV leveraging RetinaNET for weed detection in potato farms (89% accuracy) and human surveillance (97% accuracy) using real-time image processing and mapping.</li>
-                <li>Devised a custom aerodynamic compensation algorithm via the AirSim Python API, optimizing fertilizer dispersal in windy conditions and achieving 97% path traversal rectification accuracy.</li>
-                <li>Simulated complex operational environments using AirSim and ROS2 to validate real-time performance.</li>
-                <li>Integrated Dijkstra’s algorithm and the Bendy Ruler technique for efficient path planning, incorporating Hector SLAM for dynamic mapping and obstacle avoidance, and programmed automated takeoff, landing, and Return-to-Home (RTH) functions.</li>
-            </ul>
-        </div>
-        <div class="about">
-            <h3>LSTM-RNN based Emotion Detection System</h3>
-            <p><strong>Duration:</strong> Oct 2024 - Dec 2025</p>
-            <p><strong>Tech Stack:</strong> Python, PyTorch, LSTM</p>
-            <ul style="margin-left: 20px; margin-bottom: 30px;">
-                <li>Engineered a comprehensive preprocessing pipeline using ICA for artifact removal, bandpass/notch filtering, and min-max normalization, significantly enhancing EEG signal quality.</li>
-                <li>Constructed and optimized an LSTM-RNN model for real-time emotion recognition, achieving 90.9% test accuracy on the SEED-IV dataset by leveraging temporal EEG dependencies and fine-tuning hyperparameters with TensorFlow/Keras.</li>
-            </ul>
-        </div>
-        <div class="about">
-            <h3>Holonomic Drive Bot</h3>
-            <p><strong>Duration:</strong> Nov 2023 - Feb 2024</p>
-            <p><strong>Tech Stack:</strong> ROS2, Gazebo, OpenCV, Easy EDA</p>
-            <ul style="margin-left: 20px; margin-bottom: 30px;">
-                <li>Engineered and coordinated a fleet of three holonomic drive robots to autonomously render large glyphs on an 8 ft x 8 ft arena, employing overhead camera localization and Aruco markers for precise navigation.</li>
-            </ul>
-        </div>
-        <div class="about">
-            <h3>Self-Balancing Bot</h3>
-            <p><strong>Duration:</strong> Nov 2022 - Feb 2023</p>
-            <p><strong>Tech Stack:</strong> CoppeliaSim, Lua, Octave</p>
-            <ul style="margin-left: 20px; margin-bottom: 30px;">
-                <li>Developed a self-balancing bot utilizing the LQR algorithm, enabling robust traversal of steep slopes and sharp turns.</li>
-            </ul>
-        </div>
-    </section> -->
+  <!-- Footer -->
+  <footer data-aos="fade-up">
+    <p>&copy; 2024 Srinjoy Chakraborty. All rights reserved.</p>
+  </footer>
 
-    <section id="skills">
-        <h2>Technical Skills</h2>
-        <div class="about">
-            <ul style="margin-left: 20px;">
-                <li><strong>Programming Languages:</strong> Python, C/C++, Lua, SQL, Arduino IDE</li>
-                <li><strong>Machine Learning & Computer Vision:</strong> Scikit-learn, Keras, OpenCV, TensorFlow</li>
-                <li><strong>Engineering Tools:</strong> MATLAB, Simulink, Octave, Gazebo, CoppeliaSim, ArduPilot, Mission Planner</li>
-            </ul>
-        </div>
-    </section>
+  <!-- AOS Initialization -->
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 800,
+      easing: 'ease-in-out',
+      once: true
+    });
+  </script>
 
-    <section id="achievements">
-        <h2>Achievements and Certifications</h2>
-        <div class="about">
-            <ul style="margin-left: 20px;">
-                <li><strong>Certifications:</strong> MATLAB Simulink, MATLAB Stateflow, Machine Learning (Deeplearning.ai)</li>
-                <li><strong>Achievements:</strong> Contributed to NASA Asteroid Search Campaign with 11 preliminary discoveries; earned accolades at technical fests and robotics competitions (SLIET, IIT BHU, IIT Delhi)</li>
-            </ul>
-        </div>
-    </section>
+  <!-- Particles.js Initialization -->
+  <script>
+    particlesJS('particles-js', {
+      "particles": {
+        "number": {
+          "value": 80,
+          "density": {
+            "enable": true,
+            "value_area": 800
+          }
+        },
+        "color": {
+          "value": "#00FFC3"
+        },
+        "shape": {
+          "type": "circle",
+          "stroke": { "width": 0, "color": "#000" },
+          "polygon": { "nb_sides": 5 }
+        },
+        "opacity": { "value": 0.5, "random": false },
+        "size": { "value": 3, "random": true },
+        "line_linked": {
+          "enable": true,
+          "distance": 150,
+          "color": "#00FFC3",
+          "opacity": 0.4,
+          "width": 1
+        },
+        "move": {
+          "enable": true,
+          "speed": 6,
+          "direction": "none",
+          "random": false,
+          "straight": false,
+          "out_mode": "out",
+          "bounce": false
+        }
+      },
+      "interactivity": {
+        "detect_on": "canvas",
+        "events": {
+          "onhover": {
+            "enable": true,
+            "mode": "repulse"
+          },
+          "onclick": {
+            "enable": true,
+            "mode": "push"
+          },
+          "resize": true
+        },
+        "modes": {
+          "grab": {
+            "distance": 400,
+            "line_linked": { "opacity": 1 }
+          },
+          "bubble": {
+            "distance": 400,
+            "size": 40,
+            "duration": 2,
+            "opacity": 8,
+            "speed": 3
+          },
+          "repulse": {
+            "distance": 200,
+            "duration": 0.4
+          },
+          "push": { "particles_nb": 4 },
+          "remove": { "particles_nb": 2 }
+        }
+      },
+      "retina_detect": true
+    });
+  </script>
 
-    <section id="github-contributions">
-        <h2>GitHub Contributions</h2>
-        <p>Check out my GitHub activity below!</p>
-        <div align="center">
-            <img src="https://github-readme-stats.vercel.app/api?username=Srinjoy2002&hide_title=false&hide_rank=false&show_icons=true&include_all_commits=true&count_private=true&disable_animations=false&theme=default&locale=en&hide_border=false" height="150" alt="stats graph" />
-            <img src="https://github-readme-activity-graph.vercel.app/graph?username=Srinjoy2002&radius=16&theme=light&area=true&order=5" height="300" alt="activity-graph graph" />
-            <img src="https://github-readme-stats.vercel.app/api/top-langs?username=Srinjoy2002&locale=en&hide_title=false&layout=compact&card_width=320&langs_count=5&theme=default&hide_border=false" height="150" alt="languages graph" />
-        </div>
-    </section>
-     
-    <section id="contact">
-        <h2>Contact Me</h2>
-        <div class="contact-icons">
-            <a href="mailto:c02srinjoy@gmail.com"><i class="fas fa-envelope fa-lg"></i></a>
-            <a href="https://www.linkedin.com/in/srinjoysliet/" target="_blank"><i class="fab fa-linkedin fa-lg"></i></a>
-            <a href="https://github.com/Srinjoy2002" target="_blank"><i class="fab fa-github fa-lg"></i></a>
-            <a href="https://www.kaggle.com/srinjoy02" target="_blank"><i class="fab fa-kaggle fa-lg"></i></a>
-        </div>
-    </section>
-
-    <footer>
-        <p>&copy; 2024 Srinjoy Chakraborty. All rights reserved.</p>
-        <!-- <p>Views: <span id="view-count">Loading...</span></p> -->
-    </footer>
+  <!-- Typed.js Initialization (Name in multiple languages) -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      new Typed("#typed", {
+        strings: [
+          "Srinjoy Chakraborty",
+          "শ্রীনজয় চক্রবর্তী",
+          "श्रीनजॉय चक्रबर्ती"
+        ],
+        typeSpeed: 80,
+        backSpeed: 50,
+        backDelay: 2000,
+        loop: true,
+        showCursor: true,
+        cursorChar: "|",
+      });
+    });
+  </script>
+  
+  <!-- Particles.js container -->
+  <div id="particles-js"></div>
 </body>
 </html>
