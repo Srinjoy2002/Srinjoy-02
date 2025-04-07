@@ -30,13 +30,19 @@
       padding: 0;
       box-sizing: border-box;
     }
+
+    /* Enable Smooth Scrolling for anchor links */
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: 'Roboto', sans-serif;
       background-color: #1e1f26; /* Dark background */
       color: #e0e0e0;           /* Light text */
-      scroll-behavior: smooth;
       line-height: 1.6;
       overflow-x: hidden;
+      /* Particles behind everything except the navbar and hero content */
     }
     
     /* Navbar */
@@ -95,19 +101,19 @@
 
     /* Hero Section */
     .hero {
+      position: relative;
       display: flex;
       align-items: center;
-      justify-content: flex-start; /* Align to left */
+      justify-content: flex-start; /* Align content to the left */
       height: 100vh;              /* Full viewport height */
       padding-top: 80px;          /* Avoid navbar overlap */
-      padding-left: 5vw;          /* Space on the left */
       z-index: 1;                 /* Above the particle background */
-      /* Remove background box for hero */
       background: none;
       box-shadow: none;
       border-radius: 0;
     }
     .hero-content {
+      margin-left: 5vw;          /* Additional left spacing */
       display: flex;
       flex-direction: row;
       align-items: center;
@@ -142,6 +148,8 @@
       border-radius: 8px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
       transition: transform 0.3s ease;
+      /* Add scroll-margin-top so content won't hide behind the navbar */
+      scroll-margin-top: 100px;
     }
     section:hover {
       transform: translateY(-5px);
@@ -155,7 +163,7 @@
       padding-bottom: 5px;
     }
     
-    /* Exclude the .hero from these styles */
+    /* Overwrite .hero to remove box style */
     .hero section {
       background: none;
       box-shadow: none;
@@ -211,7 +219,7 @@
     #contact .contact-icons a:hover {
       color: #1e1e2f;
     }
-
+    
     /* Footer */
     footer {
       text-align: center;
@@ -238,6 +246,9 @@
       mobileMenu.classList.toggle('show');
     }
   </script>
+  
+  <!-- AOS Library -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 </head>
 <body>
   <!-- Particles.js container -->
@@ -271,7 +282,6 @@
     <div class="hero-content">
       <!-- Profile Image -->
       <img src="profile.jpg" alt="Profile Photo" class="hero-image" />
-      
       <!-- Typed text container -->
       <h1 class="hero-name">
         <span id="typed"></span>
