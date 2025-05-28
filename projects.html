@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Srinjoy Chakraborty - Projects</title>
+  <title>Srinjoy Chakraborty – Projects</title>
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet"/>
@@ -15,144 +15,106 @@
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior: smooth; }
     body {
-        font-family: 'Space Mono', monospace;
+      font-family: 'Space Mono', monospace;
       background-color: #1e1f26;
       color: #e0e0e0;
       line-height: 1.6;
     }
-
     .navbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: rgba(30, 31, 38, 0.95);
-      padding: 15px 20px;
-      z-index: 1000;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      position: fixed; top: 0; left: 0; width: 100%;
+      display: flex; justify-content: center; align-items: center;
+      background: rgba(30,31,38,0.95);
+      padding: 15px 20px; z-index: 1000;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
     }
-
-    .navbar ul {
-      list-style: none;
-      display: flex;
-    }
-
-    .navbar li {
-      margin: 0 20px;
-    }
-
+    .navbar ul { list-style: none; display: flex; }
+    .navbar li { margin: 0 20px; }
     .navbar a {
-      color: #e0e0e0;
-      text-decoration: none;
-      font-weight: 600;
-      transition: color 0.3s ease;
+      color: #e0e0e0; text-decoration: none;
+      font-weight: 600; transition: color 0.3s ease;
     }
-
-    .navbar a:hover {
-      color: #00FFC3;
-    }
+    .navbar a:hover { color: #00FFC3; }
 
     section {
       padding: 100px 20px 60px;
-      max-width: 1000px;
-      margin: 100px auto;
-      background-color: rgba(40, 44, 52, 0.95);
+      max-width: 1000px; margin: 100px auto;
+      background-color: rgba(40,44,52,0.95);
       border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
       transition: transform 0.3s ease;
     }
-
-    section:hover {
-      transform: translateY(-5px);
-    }
+    section:hover { transform: translateY(-5px); }
 
     section h2 {
-      font-size: 2.5rem;
-      color: #00FFC3;
+      font-size: 2.5rem; color: #00FFC3;
       margin-bottom: 30px;
       border-bottom: 2px solid #00FFC3;
-      display: inline-block;
-      padding-bottom: 8px;
+      display: inline-block; padding-bottom: 8px;
     }
 
     .project {
-      margin-bottom: 50px;
-      text-align: left;
-      background-color: #2e3039;
-      padding: 25px;
+      margin-bottom: 50px; text-align: left;
+      background-color: #2e3039; padding: 25px;
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.3);
       transition: transform 0.3s ease;
     }
-
-    .project:hover {
-      transform: translateY(-3px);
-    }
-
+    .project:hover { transform: translateY(-3px); }
     .project img {
-      width: 100%;
-      border-radius: 8px;
-      margin-bottom: 15px;
-      border: 2px solid #00FFC3;
+      width: 100%; border-radius: 8px;
+      margin-bottom: 15px; border: 2px solid #00FFC3;
     }
-
     .project h3 {
-      color: #00FFC3;
-      font-size: 1.8rem;
+      color: #00FFC3; font-size: 1.8rem;
       margin-bottom: 10px;
     }
-
-    .project p {
-      font-size: 1rem;
-      margin-bottom: 10px;
+    .project p, .project ul {
+      font-size: 1rem; margin-bottom: 10px;
       color: #ccc;
     }
-
+    .project ul { margin-left: 20px; list-style: disc; }
     .project a {
-      color: #00FFC3;
-      text-decoration: none;
+      color: #00FFC3; text-decoration: none;
       font-weight: bold;
     }
+    .project a:hover { text-decoration: underline; }
 
-    .project a:hover {
-      text-decoration: underline;
+    /* Slideshow */
+    .slideshow-container {
+      position: relative; max-width: 100%; margin: auto;
+      overflow: hidden; border: 2px solid #00FFC3; border-radius: 8px;
     }
+    .slide { display: none; }
+    .slide img { width: 100%; display: block; }
+    .prev, .next {
+      cursor: pointer; position: absolute; top: 50%;
+      width: auto; margin-top: -22px; padding: 8px;
+      color: #00FFC3; font-weight: bold; font-size: 1.5rem;
+      background: rgba(30,31,38,0.5); border-radius: 3px;
+      user-select: none; transition: 0.3s;
+    }
+    .next { right: 0; }
+    .prev:hover, .next:hover { background: rgba(30,31,38,0.8); }
+    .dot {
+      cursor: pointer; height: 12px; width: 12px;
+      margin: 0 4px; background: #555; border-radius: 50%;
+      display: inline-block; transition: background 0.3s;
+    }
+    .active-dot, .dot:hover { background: #00FFC3; }
 
     footer {
-      text-align: center;
-      padding: 20px;
-      background-color: #1e1f26;
-      color: #aaa;
+      text-align: center; padding: 20px;
+      background-color: #1e1f26; color: #aaa;
       font-size: 0.9rem;
     }
 
     @media (max-width: 768px) {
-      section {
-        padding: 50px 15px;
-        margin: 80px 10px;
-      }
-
-      section h2 {
-        font-size: 2rem;
-      }
-
-      .project h3 {
-        font-size: 1.4rem;
-      }
+      section { padding: 50px 15px; margin: 80px 10px; }
+      section h2 { font-size: 2rem; }
+      .project h3 { font-size: 1.4rem; }
     }
   </style>
 </head>
@@ -167,26 +129,61 @@
 
   <section id="projects">
     <h2 data-aos="fade-down">My Projects</h2>
-    <!-- New Deep‐Learning Profilometer Project -->
     <div class="project" data-aos="fade-up">
-      <h3>Deep‐Learning Driven 3D Profilometer</h3>
-      <img src="images/project_profilometer.jpg" alt="3D Profilometer Setup">
+      <h3>Deep-Learning Driven 3D Profilometer</h3>
+
+      <!-- Slideshow of PPT-exported slides -->
+      <div class="slideshow-container">
+        <div class="slide fade">
+          <img src="images\ppt_page-0001.jpg" alt="Slide 1">
+        </div>
+        <div class="slide fade">
+          <img src="images\ppt_page-0002.jpg" alt="Slide 2">
+        </div>
+        <div class="slide fade">
+          <img src="images\ppt_page-0003.jpg" alt="Slide 3">
+        </div>
+                <div class="slide fade">
+          <img src="images\ppt_page-0004.jpg" alt="Slide 3">
+        </div>
+                <div class="slide fade">
+          <img src="images\ppt_page-0005.jpg" alt="Slide 3">
+        </div>
+                <div class="slide fade">
+          <img src="images\ppt_page-0006.jpg" alt="Slide 3">
+        </div>
+                <div class="slide fade">
+          <img src="images\ppt_page-0007.jpg" alt="Slide 3">
+        </div>
+                <div class="slide fade">
+          <img src="images\ppt_page-0008.jpg" alt="Slide 3">
+        </div>
+        <!-- Add more slides as needed -->
+
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+      </div>
+      <div style="text-align:center; margin-top:10px;">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+        <!-- Add more dots to match slides -->
+      </div>
+
       <p>
-        Developed an end‐to‐end, plug-and-play 3D profilometry system combining:
+        Developed an end-to-end, plug-and-play 3D profilometry system combining:
       </p>
-      <ul style="color:#ccc; margin-left:20px; margin-bottom:10px;">
-        <li>Automated Z-axis traversal and high-speed imaging with micron-level repeatability.</li>
-        <li>ResNet–Attention U-Net for pixel-perfect in-focus region segmentation (mIoU 0.92).</li>
-        <li>Fuzzy-logic feedback over EtherCAT yielding ±0.1 µm closed-loop accuracy.</li>
-        <li>Variance-weighted focus stacking and Open3D point-cloud reconstruction.</li>
-        <li>Height-map colorization, API for dimension extraction (L×W×H in mm), and QA metrics (RMSE < 0.8 µm).</li>
+      <ul>
+        <li>Automated Z-axis traversal and synchronized high-throughput imaging with micron-level repeatability.</li>
+        <li>ResNet–Attention U-Net segmentation of in-focus regions (mIoU 0.92, 45 ms inference).</li>
+        <li>Fuzzy-logic feedback control over EtherCAT achieving ±0.1 µm closed-loop accuracy.</li>
+        <li>Variance-weighted focus stacking and Open3D point-cloud reconstruction with RMSE < 0.8 µm.</li>
       </ul>
       <p>
-        <strong>Tech stack:</strong> Python, TensorFlow, OpenCV, Open3D, EtherCAT, Tkinter GUI.
+        Tech stack: Python, TensorFlow, OpenCV, Open3D, EtherCAT, Tkinter GUI.
       </p>
       <p>
-        GitHub: 
-        <a href="https://github.com/Srinjoy2002/DeepProfilometer" target="_blank">
+        GitHub: <a href="https://github.com/Srinjoy2002/DeepProfilometer" target="_blank">
           <i class="fab fa-github"></i> View Repository
         </a>
       </p>
@@ -196,37 +193,55 @@
       <h3>SLAMDrive UAV</h3>
       <img src="images/project_uav.jpg" alt="SLAMDrive UAV">
       <p>
-        Engineered an autonomous UAV leveraging RetinaNET for weed detection in potato farms (89% accuracy) and human surveillance (97% accuracy) using real-time image processing and mapping...
+        Engineered an autonomous UAV leveraging RetinaNET for weed detection in potato farms (89% accuracy) and human surveillance (97% accuracy) using real-time image processing and SLAM-based mapping.
       </p>
-      <p>GitHub: <a href="https://github.com/serbeeq8/iotuav" target="_blank"><i class="fab fa-github"></i> Read More</a></p>
+      <p>
+        GitHub: <a href="https://github.com/serbeeq8/iotuav" target="_blank">
+          <i class="fab fa-github"></i> Read More
+        </a>
+      </p>
     </div>
 
     <div class="project" data-aos="fade-up">
       <h3>LSTM-RNN based Emotion Detection System</h3>
       <img src="images/Screenshot 2025-02-04 000550.png" alt="Emotion Detection System">
       <p>
-        Engineered a preprocessing pipeline using ICA, bandpass filtering, and LSTM-RNN for emotion detection on EEG...
+        Engineered a preprocessing pipeline using ICA and bandpass filtering, followed by LSTM-RNN classification on EEG data achieving 85% accuracy on multi-subject recordings.
       </p>
-      <p>GitHub: <a href="https://github.com/Srinjoy2002/eeg_classify" target="_blank"><i class="fab fa-github"></i> Read More</a></p>
+      <p>
+        GitHub: <a href="https://github.com/Srinjoy2002/eeg_classify" target="_blank">
+          <i class="fab fa-github"></i> Read More
+        </a>
+      </p>
     </div>
 
     <div class="project" data-aos="fade-up">
       <h3>Holonomic Drive Bot</h3>
       <img src="images/project_drive.jpg" alt="Holonomic Drive Bot">
       <p>
-        Coordinated a fleet of holonomic bots for glyph rendering using camera localization and Aruco markers...
+        Coordinated a fleet of holonomic robots for glyph rendering using camera-based localization and ArUco markers, resulting in <em>real-time</em> path adjustments and sub-10cm tracking error.
       </p>
-      <p>GitHub: <a href="https://github.com/Srinjoy2002/eyrc_HB_3636" target="_blank"><i class="fab fa-github"></i> Read More</a></p>
+      <p>
+        GitHub: <a href="https://github.com/Srinjoy2002/eyrc_HB_3636" target="_blank">
+          <i class="fab fa-github"></i> Read More
+        </a>
+      </p>
     </div>
 
     <div class="project" data-aos="fade-up">
       <h3>Self-Balancing Bot</h3>
       <img src="images/project_sbb.png" alt="Self-Balancing Bot">
       <p>
-        Developed a self-balancing bot with LQR for steep slope traversal...
+        Developed a self-balancing robot using an LQR controller and IMU fusion, capable of traversing slopes up to 15° with <em>stable</em> 0.5° tilt error.
       </p>
-      <p>GitHub: <a href="https://github.com/Srinjoy2002/self-balancing-bot" target="_blank"><i class="fab fa-github"></i> Read More</a></p>
+      <p>
+        GitHub: <a href="https://github.com/Srinjoy2002/self-balancing-bot" target="_blank">
+          <i class="fab fa-github"></i> Read More
+        </a>
+      </p>
     </div>
+
+
   </section>
 
   <footer>
@@ -236,10 +251,25 @@
   <!-- AOS Script -->
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   <script>
-    AOS.init({
-      duration: 1000,
-      once: true
-    });
+    AOS.init({ duration: 1000, once: true });
+  </script>
+
+  <!-- Slideshow Script -->
+  <script>
+    let slideIndex = 1;
+    showSlides(slideIndex);
+    function plusSlides(n) { showSlides(slideIndex += n); }
+    function currentSlide(n) { showSlides(slideIndex = n); }
+    function showSlides(n) {
+      const slides = document.getElementsByClassName("slide");
+      const dots   = document.getElementsByClassName("dot");
+      if (n > slides.length) slideIndex = 1;
+      if (n < 1) slideIndex = slides.length;
+      for (let s of slides) s.style.display = "none";
+      for (let d of dots) d.className = d.className.replace(" active-dot", "");
+      slides[slideIndex-1].style.display = "block";
+      dots[slideIndex-1].className += " active-dot";
+    }
   </script>
 
 </body>
