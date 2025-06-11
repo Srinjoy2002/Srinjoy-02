@@ -1,0 +1,93 @@
+/* ---------------------
+   NETLIFY CMS CUSTOM STYLE
+--------------------- */
+:root {
+  --bg-color: #121212;
+  --panel-color: #1e1e1e;
+  --text-color: #e0e0e0;
+  --accent-color: #00ffd5;
+  --font-family: 'Orbitron', 'Segoe UI', 'Roboto Mono', sans-serif;
+}
+
+/* Override CMS Root */
+body, .cms-editor-visual, .cms-editor-visual *, .ReactVirtualized__Grid {
+  background-color: var(--bg-color) !important;
+  color: var(--text-color) !important;
+  font-family: var(--font-family);
+}
+
+/* Login Page */
+body > div > div > div {
+  background: var(--panel-color) !important;
+  border-radius: 10px;
+  box-shadow: 0 0 15px var(--accent-color);
+}
+
+/* Input Fields */
+input, textarea, select {
+  background: #2c2c2c !important;
+  color: var(--text-color) !important;
+  border: 1px solid var(--accent-color) !important;
+  font-family: var(--font-family);
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: var(--accent-color);
+  outline: none;
+}
+
+/* Buttons */
+button {
+  background-color: var(--accent-color) !important;
+  color: #000 !important;
+  font-weight: bold;
+  font-family: var(--font-family);
+  border-radius: 4px;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background-color: #00c9aa !important;
+}
+
+/* Side panel + preview */
+.nc-app-header,
+.nc-sidebar,
+.nc-editor-toolbar,
+.nc-previewPane-frame,
+.nc-widgetPreview,
+.nc-previewPane {
+  background-color: var(--panel-color) !important;
+}
+
+/* Headers + Labels */
+h1, h2, h3, h4, label {
+  color: var(--accent-color) !important;
+  font-family: var(--font-family);
+  text-shadow: 0 0 5px #00ffd5aa;
+}
+
+/* Field Sections */
+.nc-field {
+  margin-bottom: 20px;
+  padding: 10px;
+  border-left: 4px solid var(--accent-color);
+  background: #1b1b1b;
+  border-radius: 4px;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-color);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--accent-color);
+}
+
+/* Hide "Netlify CMS" logo in sidebar (optional) */
+.nc-sidebar-logo {
+  display: none;
+}
