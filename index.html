@@ -1,490 +1,1549 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Srinjoy Chakraborty</title>
-  
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet"/>
-  
-  <!-- Font Awesome -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
-  
-  <!-- Favicon -->
-  <link rel="icon" href="profile.ico" type="image/x-icon"/>
-  
-  <!-- AOS for scroll animations -->
-  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
-  <!-- Particles.js -->
-  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
-  
-  <!-- Typed.js for typing animation -->
-  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-  
-  <style>
-    /* Reset */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    <meta charset="UTF-8">
 
-    /* Enable Smooth Scrolling for anchor links */
-    html {
-      scroll-behavior: smooth;
-    }
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    body {
-        font-family: 'Space Mono', monospace;
-      background-color: #1e1f26; /* Dark background */
-      color: #e0e0e0;           /* Light text */
-      line-height: 1.6;
-      overflow-x: hidden;
-      /* Particles behind everything except the navbar and hero content */
-    }
-    
-    /* Navbar */
-    .navbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: rgba(30, 31, 38, 0.95);
-      padding: 15px 20px;
-      z-index: 1000;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    }
-    .navbar ul {
-      list-style: none;
-      display: flex;
-    }
-    .navbar li {
-      margin: 0 20px;
-    }
-    .navbar a {
-      color: #e0e0e0;
-      text-decoration: none;
-      font-weight: 600;
-      transition: color 0.3s ease;
-    }
-    .navbar a:hover {
-      color: #00FFC3;
-    }
-    .hamburger {
-      display: none;
-      font-size: 24px;
-      color: #e0e0e0;
-      cursor: pointer;
-    }
-    .navbar ul.mobile {
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      width: 100%;
-    }
-    @media (max-width: 720px) {
-      .navbar ul {
-        display: none;
-      }
-      .hamburger {
-        display: block;
-      }
-      .navbar ul.mobile.show {
-        display: flex;
-      }
-    }
+    <title>Srinjoy Chakraborty | PhD Researcher | IIT Kanpur</title>
 
-    /* Hero Section */
-    .hero {
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: flex-start; /* Align content to the left */
-      height: 100vh;              /* Full viewport height */
-      padding-top: 80px;          /* Avoid navbar overlap */
-      z-index: 1;                 /* Above the particle background */
-      background: none;
-      box-shadow: none;
-      border-radius: 0;
-    }
-    .hero-content {
-      margin-left: 1vw;          /* Additional left spacing */
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      gap: 30px;
-    }
-    .hero-image {
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid #00FFC3;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    }
-    .hero-name {
-      font-size: 2rem;
-      font-weight: 700;
-      color: #00FFC3;
-      margin: 0;
-    }
-    .typed-cursor {
-      color: #00FFC3;
-      font-weight: bold;
-    }
-    
-    /* Default Section Styles */
-    section {
-      padding: 80px 20px 60px;
-      text-align: center;
-      max-width: 800px;
-      margin: 80px auto;
-      background-color: rgba(40, 44, 52, 0.95);
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-      transition: transform 0.3s ease;
-      /* Add scroll-margin-top so content won't hide behind the navbar */
-      scroll-margin-top: 100px;
-    }
-    section:hover {
-      transform: translateY(-5px);
-    }
-    section h2 {
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-      color: #00FFC3;
-      border-bottom: 2px solid #00FFC3;
-      display: inline-block;
-      padding-bottom: 5px;
-    }
-    
-    /* Overwrite .hero to remove box style */
-    .hero section {
-      background: none;
-      box-shadow: none;
-    }
-    
-    /* About, Experience, Education */
-    .about, .experience, .education {
-      text-align: left;
-      margin: 20px auto;
-    }
-    .about h3, .experience h3, .education h3 {
-      margin-top: 20px;
-      margin-bottom: 10px;
-      font-size: 1.5rem;
-      color: #00FFC3;
-    }
-    .about p, .experience p, .education p {
-      margin-bottom: 10px;
-    }
-    .about ul, .experience ul, .education ul {
-      margin-left: 20px;
-      margin-bottom: 30px;
-      font-size: 1rem;
-    }
-    
-    /* GitHub Contributions */
-    #github-contributions {
-      background-color: #282c34;
-      padding: 40px;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-      overflow-x: auto;
-      max-width: 100%;
-      margin-bottom: 40px;
-    }
-    #github-contributions h2 {
-      color: #00FFC3;
-    }
-    
-    /* Contact Section */
-    #contact .contact-icons {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin: 20px 0;
-    }
-    #contact .contact-icons a {
-      color: #00FFC3;
-      margin: 0 15px;
-      font-size: 24px;
-      transition: color 0.3s ease;
-    }
-    #contact .contact-icons a:hover {
-      color: #1e1e2f;
-    }
-    
-    /* Footer */
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: #222;
-      color: #fff;
-      width: 100%;
-    }
+    <meta name="description"
+          content="Srinjoy Chakraborty - PhD Research Scholar in Control & Automation, IIT Kanpur. Research in Autonomous Swarm Robotics, Multi-Agent Systems, AI and Computer Vision.">
 
-    /* Particles.js container */
-    #particles-js {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      top: 0;
-      left: 0;
-    }
-  </style>
-  
-  <script>
-    function toggleMenu() {
-      const mobileMenu = document.querySelector('.navbar ul.mobile');
-      mobileMenu.classList.toggle('show');
-    }
-  </script>
-  
-  <!-- AOS Library -->
-  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <meta name="theme-color" content="#050816">
+
+    <!-- Fonts -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <!-- Styles -->
+
+    <link rel="stylesheet" href="css/styles.css">
+
 </head>
+
 <body>
-  <!-- Particles.js container -->
-  <div id="particles-js"></div>
 
-  <!-- Navbar -->
-  <nav class="navbar" data-aos="fade-down">
-    <div class="hamburger" onclick="toggleMenu()">
-      <i class="fas fa-bars"></i>
-    </div>
-    <ul>
-      <li><a href="#hero">Home</a></li>
-      <li><a href="#about">About Me</a></li>
-      <li><a href="#education">Education</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="projects.html">Projects</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <ul class="mobile">
-      <li><a href="#hero">Home</a></li>
-      <li><a href="#about">About Me</a></li>
-      <li><a href="#education">Education</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="projects.html">Projects</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+<!--=========================================================
+                        LOADER
+==========================================================-->
 
-  <!-- Hero Section -->
-  <section class="hero" id="hero" data-aos="fade-up">
-    <div class="hero-content">
-      <!-- Profile Image -->
-      <img src="profile.jpg" alt="Profile Photo" class="hero-image" />
-      <!-- Typed text container -->
-      <h1 class="hero-name">
-        <span id="typed"></span>
-      </h1>
-    </div>
-  </section>
+<div class="loader">
 
-  <!-- About Section -->
-  <section id="about" data-aos="fade-up">
-    <h2>About Me</h2>
-    <p>I'm Srinjoy Chakraborty, a passionate robotics and tech enthusiast with a focus on robotic technologies and automation. I enjoy creating innovative solutions to complex problems and am constantly looking for opportunities to expand my knowledge and skills.</p>
-    <a href="CV_Srinjoy.pdf" target="_blank">
-      <i class="fas fa-file-pdf"></i> View My Resume
+    <div class="loader-ring"></div>
+
+</div>
+
+
+<!--=========================================================
+                BACKGROUND EFFECTS
+==========================================================-->
+
+<canvas id="networkCanvas"></canvas>
+
+<div class="grid"></div>
+
+<div class="aurora one"></div>
+
+<div class="aurora two"></div>
+
+<div id="cursor-light"></div>
+
+
+<!--=========================================================
+                        NAVBAR
+==========================================================-->
+
+<nav class="navbar">
+
+    <a href="#home" class="logo">
+
+        SC
+
     </a>
-  </section>
 
-  <!-- Education Section -->
-  <section id="education" data-aos="fade-up">
-    <h2>Education</h2>
-    <div class="education">
-      <h3>Indian Institute of Technology Kanpur</h3>
-      <p><b>PhD, Control and Automation, Electrical Engineering</b></p>
-      <p>Kanpur, PhD | July 2025 - Present</p>
+    <ul class="nav-links" id="navLinks">
+
+        <li><a href="#home">Home</a></li>
+
+        <li><a href="#about">About</a></li>
+
+        <li><a href="#research">Research</a></li>
+
+        <li><a href="#projects">Projects</a></li>
+
+        <li><a href="#contact">Contact</a></li>
+
+    </ul>
+
+    <div class="nav-actions">
+
+        <a href="assets/Srinjoy_CV.pdf"
+           class="btn btn-primary">
+
+            Resume
+
+        </a>
+
+        <button class="menu-btn" aria-label="Toggle navigation">
+
+            <i class="fa-solid fa-bars"></i>
+
+        </button>
+
     </div>
-    <div class="education">
-      <h3>Sant Longowal Institute of Engineering and Technology (SLIET)</h3>
-      <p>B.E. in Electrical Engineering</p>
-      <p>Sangrur, Punjab | Nov 2021 - May 2025</p>
+
+</nav>
+
+
+<!--=========================================================
+                        HERO
+==========================================================-->
+
+<section id="home" class="hero container">
+
+    <!--====================
+            LEFT
+    =====================-->
+
+    <div class="hero-left fade-left">
+
+        <div class="hero-badge glass">
+
+            <i class="fa-solid fa-microchip"></i>
+
+            PhD Research Scholar • IIT Kanpur
+
+        </div>
+
+        <h1 class="hero-title">
+
+            Srinjoy
+
+            <span>
+
+                Chakraborty
+
+            </span>
+
+        </h1>
+
+        <p class="hero-subtitle">
+
+            I develop intelligent autonomous robotic systems through
+            <strong>Control Theory</strong>,
+            <strong>Multi-Agent Systems</strong>,
+            <strong>Artificial Intelligence</strong>,
+            <strong>Computer Vision</strong>,
+            and
+            <strong>Swarm Robotics</strong>.
+
+            My research focuses on building scalable autonomous systems
+            capable of cooperative perception, planning and decision making.
+
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="#projects"
+
+               class="btn btn-primary">
+
+                View Projects
+
+            </a>
+
+            <a href="#contact"
+
+               class="btn btn-secondary">
+
+                Contact Me
+
+            </a>
+
+        </div>
+
+        <div class="hero-tech">
+
+            <span>ROS 2</span>
+
+            <span>Python</span>
+
+            <span>MATLAB</span>
+
+            <span>AI</span>
+
+            <span>Control</span>
+
+            <span>Computer Vision</span>
+
+            <span>Swarm Robotics</span>
+
+            <span>Optimization</span>
+
+        </div>
+
     </div>
-  </section>
 
-  <!-- Experience Section -->
-  <!-- Experience Section -->
-  <section id="experience" data-aos="fade-up">
-    <h2>Experience</h2>
-    <div class="about">
-      <h3 style="margin-top: 20px;">Undergraduate Research Project Intern</h3>
-      <p style="margin-bottom: 10px;">Indian Institute of Technology, Guwahati | Jan 2025 - May 2025</p>
-      <ul style="margin-left: 20px; margin-bottom: 30px;">
-        <li>Automated Z-axis traversal and synchronized high-throughput imaging with micron-level repeatability.</li>
-        <li>ResNet–Attention U-Net segmentation of in-focus regions (mIoU 0.92, 45 ms inference).</li>
-        <li>Fuzzy-logic feedback control over EtherCAT achieving ±0.1 µm closed-loop accuracy.</li>
-      </ul>
-  
-      <h3 style="margin-top: 20px;">Summer Research Intern</h3>
-      <p style="margin-bottom: 10px;">Indian Institute of Technology, Guwahati | Jun 2024 - Dec 2024</p>
-      <ul style="margin-left: 20px; margin-bottom: 30px;">
-        <li>Converted 2D images into scalable 3D point clouds, achieving a 92% scaling accuracy.</li>
-        <li>Engineered an image processing pipeline to isolate in-focus regions, thereby enhancing the quality of 3D reconstructions.</li>
-        <li>Deployed Mask R-CNN and Laplacian edge detection algorithms for accurate mask generation and focus stacking.</li>
-        <li>Leveraged OpenCV for optimizing image alignment and fusion using brute-force matching and SIFT techniques.</li>
-      </ul>
-  
-      <h3 style="margin-top: 20px;">Summer Research Intern</h3>
-      <p style="margin-bottom: 10px;">National Institute of Technology, Durgapur | Jun 2023 - Jul 2023</p>
-      <ul style="margin-left: 20px; margin-bottom: 30px;">
-        <li>Developed nodes and launch files for an Autonomous Differential Bot using SLAM.</li>
-        <li>Tech Stack: ROS, SLAM, Gazebo, Python, C++, Arduino IDE.</li>
-      </ul>
-  
-      <h3 style="margin-top: 20px;">Winter Intern</h3>
-      <p style="margin-bottom: 10px;">Indian Railways, Alipurduar Junction | Jan 2023 - Feb 2023</p>
-      <ul style="margin-left: 20px; margin-bottom: 30px;">
-        <li>Worked on maintenance and operation of transformers, synchronization panels, water pumps, and diesel generators.</li>
-        <li>Diagnosed and resolved issues in synchronization panels and DG sets, reducing system downtime.</li>
-      </ul>
+
+    <!--====================
+            RIGHT
+    =====================-->
+
+    <div class="hero-right fade-right">
+
+        <div class="pfp-card glass">
+
+            <div class="ring"></div>
+
+            <img src="assets/profile.jpg"
+
+                 alt="Srinjoy Chakraborty">
+
+        </div>
+
     </div>
-  </section>
 
 
-  <!-- GitHub Contributions Section -->
-  <section id="github-contributions" data-aos="fade-up">
-    <h2>GitHub Contributions</h2>
-    <p>Check out my GitHub activity below!</p>
-    <div align="center">
-      <img src="https://github-readme-stats.vercel.app/api?username=Srinjoy2002&hide_title=false&hide_rank=false&show_icons=true&include_all_commits=true&count_private=true&disable_animations=false&theme=dracula&locale=en&hide_border=false" height="150" alt="stats graph" />
-      <img src="https://github-readme-activity-graph.vercel.app/graph?username=Srinjoy2002&radius=16&theme=dracula&area=true&order=5" height="300" alt="activity-graph graph" />
-      <img src="https://github-readme-stats.vercel.app/api/top-langs?username=Srinjoy2002&locale=en&hide_title=false&layout=compact&card_width=320&langs_count=5&theme=dracula&hide_border=false" height="150" alt="languages graph" />
+</section>
+<!--=========================================================
+                        ABOUT
+==========================================================-->
+
+<section id="about" class="about">
+
+    <div class="container">
+
+        <div class="section-header fade-up">
+
+            <span class="section-tag">
+                About Me
+            </span>
+
+            <h2>
+                Engineering Intelligence for Autonomous Systems
+            </h2>
+
+            <p>
+                I am a PhD Research Scholar in the Department of Electrical
+                Engineering at the Indian Institute of Technology Kanpur,
+                specializing in Control & Automation. My work focuses on
+                autonomous robotic systems that combine control theory,
+                artificial intelligence and distributed decision making.
+            </p>
+
+        </div>
+
+        <div class="about-grid">
+
+            <div class="about-card glass fade-left">
+
+                <h3>
+
+                    Research Philosophy
+
+                </h3>
+
+                <p>
+
+                    My research aims to bridge rigorous mathematical control
+                    theory with practical robotic systems capable of operating
+                    in uncertain environments.
+
+                </p>
+
+                <p>
+
+                    I work on scalable autonomous systems inspired by nature,
+                    where multiple agents cooperate through decentralized
+                    intelligence instead of centralized control.
+
+                </p>
+
+                <p>
+
+                    My interests include autonomous swarm robotics,
+                    multi-agent coordination, nonlinear control,
+                    computer vision, reinforcement learning and
+                    real-time robotic systems.
+
+                </p>
+
+                <div class="about-highlight">
+
+                    <div class="highlight">
+
+                        <h2>
+
+                            15+
+
+                        </h2>
+
+                        <span>
+
+                            Engineering Projects
+
+                        </span>
+
+                    </div>
+
+                    <div class="highlight">
+
+                        <h2>
+
+                            8+
+
+                        </h2>
+
+                        <span>
+
+                            Research Domains
+
+                        </span>
+
+                    </div>
+
+                    <div class="highlight">
+
+                        <h2>
+
+                            20+
+
+                        </h2>
+
+                        <span>
+
+                            Technical Skills
+
+                        </span>
+
+                    </div>
+
+                    <div class="highlight">
+
+                        <h2>
+
+                            ∞
+
+                        </h2>
+
+                        <span>
+
+                            Curiosity
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="about-card glass fade-right">
+
+                <h3>
+
+                    Core Interests
+
+                </h3>
+
+                <div class="skills">
+
+                    <div class="skill">Autonomous Swarms</div>
+                    <div class="skill">Multi-Agent Systems</div>
+                    <div class="skill">Control Theory</div>
+                    <div class="skill">Computer Vision</div>
+                    <div class="skill">Optimization</div>
+                    <div class="skill">Artificial Intelligence</div>
+                    <div class="skill">Deep Learning</div>
+                    <div class="skill">Reinforcement Learning</div>
+                    <div class="skill">ROS2</div>
+                    <div class="skill">Python</div>
+                    <div class="skill">MATLAB</div>
+                    <div class="skill">Linux</div>
+
+                </div>
+
+            </div>
+
+        </div>
+
     </div>
-  </section>
 
-  <!-- Contact Section -->
-  <section id="contact" data-aos="fade-up">
-    <h2>Contact Me</h2>
-    <div class="contact-icons">
-      <a href="mailto:c02srinjoy@gmail.com"><i class="fas fa-envelope fa-lg"></i></a>
-      <a href="mailto:srinjoyc25@iitk.ac.in"><i class="fas fa-university fa-lg"></i></a>
-      <a href="https://www.linkedin.com/in/srinjoysliet/" target="_blank"><i class="fab fa-linkedin fa-lg"></i></a>
-      <a href="https://github.com/Srinjoy2002" target="_blank"><i class="fab fa-github fa-lg"></i></a>
-      <a href="https://www.kaggle.com/srinjoy02" target="_blank"><i class="fab fa-kaggle fa-lg"></i></a>
+</section>
+
+
+
+<!--=========================================================
+                    EDUCATION
+==========================================================-->
+
+<section id="education">
+
+    <div class="container">
+
+        <div class="section-header fade-up">
+
+            <span class="section-tag">
+
+                Education
+
+            </span>
+
+            <h2>
+
+                Academic Journey
+
+            </h2>
+
+        </div>
+
+        <div class="timeline">
+
+            <div class="timeline-item glass fade-up">
+
+                <div class="timeline-year">
+
+                    Present
+
+                </div>
+
+                <h3>
+
+                    Indian Institute of Technology Kanpur
+
+                </h3>
+
+                <h4>
+
+                    PhD • Electrical Engineering
+
+                </h4>
+
+                <p>
+
+                    Department of Electrical Engineering
+
+                    <br>
+
+                    Specialization in Control & Automation
+
+                    <br><br>
+
+                    Research Topics:
+
+                    Autonomous Swarm Robotics,
+                    Multi-Agent Systems,
+                    Artificial Intelligence,
+                    Cooperative Control,
+                    Computer Vision.
+
+                </p>
+
+            </div>
+
+            <div class="timeline-item glass fade-up">
+
+                <div class="timeline-year">
+
+                    Master's
+
+                </div>
+
+                <h3>
+
+                    M.Tech in Electrical Engineering
+
+                </h3>
+
+                <p>
+
+                    Advanced studies in
+
+                    Control Systems,
+
+                    Optimization,
+
+                    Machine Learning,
+
+                    Robotics,
+
+                    Signal Processing
+
+                    and Applied Mathematics.
+
+                </p>
+
+            </div>
+
+            <div class="timeline-item glass fade-up">
+
+                <div class="timeline-year">
+
+                    Bachelor's
+
+                </div>
+
+                <h3>
+
+                    B.Tech in Electrical Engineering
+
+                </h3>
+
+                <p>
+
+                    Foundation in Electrical Engineering,
+
+                    Embedded Systems,
+
+                    Programming,
+
+                    Electronics,
+
+                    Mathematics
+
+                    and Automation.
+
+                </p>
+
+            </div>
+
+        </div>
+
     </div>
-  </section>
 
-  <!-- Footer -->
-  <footer data-aos="fade-up">
-    <p>&copy; 2024 Srinjoy Chakraborty. All rights reserved.</p>
-  </footer>
+</section>
 
-  <!-- AOS Initialization -->
-  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-  <script>
-    AOS.init({
-      duration: 800,
-      easing: 'ease-in-out',
-      once: true
-    });
-  </script>
 
-  <!-- Particles.js Initialization -->
-  <script>
-    particlesJS('particles-js', {
-      "particles": {
-        "number": {
-          "value": 80,
-          "density": {
-            "enable": true,
-            "value_area": 800
-          }
-        },
-        "color": {
-          "value": "#00FFC3"
-        },
-        "shape": {
-          "type": "circle",
-          "stroke": { "width": 0, "color": "#000" },
-          "polygon": { "nb_sides": 5 }
-        },
-        "opacity": { "value": 0.5, "random": false },
-        "size": { "value": 3, "random": true },
-        "line_linked": {
-          "enable": true,
-          "distance": 150,
-          "color": "#00FFC3",
-          "opacity": 0.4,
-          "width": 1
-        },
-        "move": {
-          "enable": true,
-          "speed": 6,
-          "direction": "none",
-          "random": false,
-          "straight": false,
-          "out_mode": "out",
-          "bounce": false
-        }
-      },
-      "interactivity": {
-        "detect_on": "canvas",
-        "events": {
-          "onhover": {
-            "enable": true,
-            "mode": "repulse"
-          },
-          "onclick": {
-            "enable": true,
-            "mode": "push"
-          },
-          "resize": true
-        },
-        "modes": {
-          "grab": {
-            "distance": 400,
-            "line_linked": { "opacity": 1 }
-          },
-          "bubble": {
-            "distance": 400,
-            "size": 40,
-            "duration": 2,
-            "opacity": 8,
-            "speed": 3
-          },
-          "repulse": {
-            "distance": 200,
-            "duration": 0.4
-          },
-          "push": { "particles_nb": 4 },
-          "remove": { "particles_nb": 2 }
-        }
-      },
-      "retina_detect": true
-    });
-  </script>
 
-  <!-- Typed.js Initialization (Name in multiple languages) -->
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      new Typed("#typed", {
-        strings: [
-          "Srinjoy Chakraborty",
-          "সৃঞ্জয় চক্রবর্তী",
-          "सृंजय चक्रवर्ती"
-        ],
-        typeSpeed: 80,
-        backSpeed: 50,
-        backDelay: 2000,
-        loop: true,
-        showCursor: true,
-        cursorChar: "|",
-      });
-    });
-  </script>
-  
-  <!-- Particles.js container -->
-  <div id="particles-js"></div>
+<!--=========================================================
+                    EXPERIENCE
+==========================================================-->
+
+<section id="experience">
+
+    <div class="container">
+
+        <div class="section-header fade-up">
+
+            <span class="section-tag">
+
+                Experience
+
+            </span>
+
+            <h2>
+
+                Research & Teaching
+
+            </h2>
+
+        </div>
+
+        <div class="timeline">
+
+            <div class="timeline-item glass fade-up">
+
+                <div class="timeline-year">
+
+                    Current
+
+                </div>
+
+                <h3>
+
+                    Research Scholar
+
+                </h3>
+
+                <p>
+
+                    Conducting research in autonomous swarm robotics,
+                    cooperative control,
+                    decentralized intelligence,
+                    motion planning
+                    and robotic autonomy.
+
+                </p>
+
+            </div>
+
+            <div class="timeline-item glass fade-up">
+
+                <div class="timeline-year">
+
+                    IIT Kanpur
+
+                </div>
+
+                <h3>
+
+                    Teaching Assistant
+
+                </h3>
+
+                <p>
+
+                    Assisted undergraduate courses,
+                    laboratory sessions,
+                    tutorials,
+                    grading
+                    and academic mentoring.
+
+                </p>
+
+            </div>
+
+            <div class="timeline-item glass fade-up">
+
+                <div class="timeline-year">
+
+                    Projects
+
+                </div>
+
+                <h3>
+
+                    Research & Development
+
+                </h3>
+
+                <p>
+
+                    Designed robotics software,
+                    simulation frameworks,
+                    AI pipelines,
+                    optimization algorithms,
+                    vision systems
+                    and embedded robotic applications.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!--=========================================================
+                        RESEARCH
+==========================================================-->
+
+<section id="research" class="research">
+
+    <div class="container">
+
+        <div class="section-header fade-up">
+
+            <span class="section-tag">
+
+                Research
+
+            </span>
+
+            <h2>
+
+                Current Research Interests
+
+            </h2>
+
+            <div class="section-divider"></div>
+
+        </div>
+
+        <div class="research-grid">
+
+            <div class="research-card glass hover-lift">
+
+                <div class="research-icon">
+
+                    <i class="fas fa-robot"></i>
+
+                </div>
+
+                <h3>
+
+                    Autonomous Swarm Robotics
+
+                </h3>
+
+                <p>
+
+                    Bio-inspired autonomous robotic systems,
+                    decentralized coordination,
+                    formation control
+                    and distributed decision making.
+
+                </p>
+
+                <div class="research-tags">
+
+                    <span>Swarm Intelligence</span>
+                    <span>Control</span>
+                    <span>Robotics</span>
+
+                </div>
+
+            </div>
+
+            <div class="research-card glass hover-lift">
+
+                <div class="research-icon">
+
+                    <i class="fas fa-project-diagram"></i>
+
+                </div>
+
+                <h3>
+
+                    Multi-Agent Systems
+
+                </h3>
+
+                <p>
+
+                    Cooperative control,
+                    consensus,
+                    graph theory,
+                    coalition formation
+                    and distributed optimization.
+
+                </p>
+
+                <div class="research-tags">
+
+                    <span>Consensus</span>
+                    <span>Graph Theory</span>
+                    <span>Optimization</span>
+
+                </div>
+
+            </div>
+
+            <div class="research-card glass hover-lift">
+
+                <div class="research-icon">
+
+                    <i class="fas fa-brain"></i>
+
+                </div>
+
+                <h3>
+
+                    Artificial Intelligence
+
+                </h3>
+
+                <p>
+
+                    Deep learning,
+                    reinforcement learning,
+                    intelligent perception
+                    and decision-making for robotics.
+
+                </p>
+
+                <div class="research-tags">
+
+                    <span>AI</span>
+                    <span>RL</span>
+                    <span>Vision</span>
+
+                </div>
+
+            </div>
+
+            <div class="research-card glass hover-lift">
+
+                <div class="research-icon">
+
+                    <i class="fas fa-route"></i>
+
+                </div>
+
+                <h3>
+
+                    Motion Planning
+
+                </h3>
+
+                <p>
+
+                    Dubins paths,
+                    trajectory optimization,
+                    collision avoidance,
+                    nonlinear control
+                    and autonomous navigation.
+
+                </p>
+
+                <div class="research-tags">
+
+                    <span>Planning</span>
+                    <span>Control</span>
+                    <span>Trajectory</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<!--=========================================================
+                    SKILLS
+==========================================================-->
+
+<section id="skills">
+
+    <div class="container">
+
+        <div class="section-header fade-up">
+
+            <span class="section-tag">
+
+                Technical Stack
+
+            </span>
+
+            <h2>
+
+                Technologies & Tools
+
+            </h2>
+
+            <p>
+
+                Technologies that I use for research,
+                simulation,
+                robotics,
+                AI
+                and software development.
+
+            </p>
+
+        </div>
+
+        <div class="skills">
+
+            <div class="skill">Python</div>
+            <div class="skill">MATLAB</div>
+            <div class="skill">C++</div>
+            <div class="skill">ROS2</div>
+            <div class="skill">Gazebo</div>
+            <div class="skill">Docker</div>
+            <div class="skill">Linux</div>
+            <div class="skill">Git</div>
+            <div class="skill">TensorFlow</div>
+            <div class="skill">PyTorch</div>
+            <div class="skill">OpenCV</div>
+            <div class="skill">Open3D</div>
+            <div class="skill">NumPy</div>
+            <div class="skill">SciPy</div>
+            <div class="skill">LaTeX</div>
+            <div class="skill">Arduino</div>
+            <div class="skill">ESP32</div>
+            <div class="skill">EtherCAT</div>
+            <div class="skill">Machine Learning</div>
+            <div class="skill">Control Systems</div>
+            <div class="skill">Optimization</div>
+            <div class="skill">Computer Vision</div>
+            <div class="skill">Swarm Robotics</div>
+            <div class="skill">Multi-Agent Systems</div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!--=========================================================
+                FEATURED PROJECT
+==========================================================-->
+
+<section class="projects" id="projects">
+
+    <div class="container">
+
+        <div class="section-header fade-up">
+
+            <span class="section-tag">
+
+                Featured Research
+
+            </span>
+
+            <h2>
+
+                Flagship Project
+
+            </h2>
+
+        </div>
+
+        <div class="featured-project glass fade-scale">
+
+            <img src="assets/project-profilometer.jpg"
+                 alt="Deep-Learning Driven 3D Profilometer">
+
+            <div class="featured-content">
+
+                <span class="hero-badge">
+
+                    Flagship Build
+
+                </span>
+
+                <h2>
+
+                    Deep-Learning Driven 3D Profilometer
+
+                </h2>
+
+                <p>
+
+                    An end-to-end, plug-and-play 3D profilometry system: automated
+                    Z-axis traversal with synchronized high-throughput imaging at
+                    micron-level repeatability, ResNet–Attention U-Net segmentation
+                    of in-focus regions (mIoU 0.92, 45 ms inference), fuzzy-logic
+                    feedback control over EtherCAT achieving ±0.1 µm closed-loop
+                    accuracy, and variance-weighted focus stacking with Open3D
+                    point-cloud reconstruction (RMSE &lt; 0.8 µm).
+
+                </p>
+
+                <div class="project-tags">
+
+                    <span>Python</span>
+                    <span>TensorFlow</span>
+                    <span>OpenCV</span>
+                    <span>Open3D</span>
+                    <span>EtherCAT</span>
+                    <span>Tkinter</span>
+
+                </div>
+
+                <div class="featured-buttons">
+
+                    <a href="https://github.com/Srinjoy2002/DeepProfilometer"
+                       target="_blank"
+                       class="btn btn-primary">
+
+                        View Repository
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+<!--=========================================================
+                    PROJECT GRID
+==========================================================-->
+
+        <div class="project-grid">
+
+
+<!--==================== Project 1 ====================-->
+
+            <article class="project-card hover-lift">
+
+                <div class="project-image">
+
+                    <img src="assets/project_uav.jpg"
+                         alt="SLAMDrive UAV">
+
+                    <div class="project-overlay"></div>
+
+                </div>
+
+                <div class="project-content">
+
+                    <h3>
+
+                        SLAMDrive UAV
+
+                    </h3>
+
+                    <p>
+
+                        Autonomous UAV using RetinaNet for weed detection in
+                        potato farms (89% accuracy) and human surveillance
+                        (97% accuracy),
+                        with real-time image processing
+                        and SLAM-based mapping.
+
+                    </p>
+
+                    <div class="project-tags">
+
+                        <span>RetinaNet</span>
+
+                        <span>SLAM</span>
+
+                        <span>Computer Vision</span>
+
+                    </div>
+
+                    <div class="project-footer">
+
+                        <div class="project-links">
+
+                            <a href="https://github.com/serbeeq8/iotuav" target="_blank">
+
+                                <i class="fab fa-github"></i>
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+
+<!--==================== Project 2 ====================-->
+
+            <article class="project-card hover-lift">
+
+                <div class="project-image">
+
+                    <img src="assets/project_eeg.jpg"
+                         alt="LSTM-RNN based Emotion Detection System">
+
+                    <div class="project-overlay"></div>
+
+                </div>
+
+                <div class="project-content">
+
+                    <h3>
+
+                        LSTM-RNN Emotion Detection
+
+                    </h3>
+
+                    <p>
+
+                        Preprocessing pipeline using ICA and bandpass filtering,
+                        followed by LSTM-RNN classification on EEG data,
+                        achieving 85% accuracy
+                        on multi-subject recordings.
+
+                    </p>
+
+                    <div class="project-tags">
+
+                        <span>LSTM</span>
+
+                        <span>EEG</span>
+
+                        <span>Signal Processing</span>
+
+                    </div>
+
+                    <div class="project-footer">
+
+                        <div class="project-links">
+
+                            <a href="https://github.com/Srinjoy2002/eeg_classify" target="_blank">
+
+                                <i class="fab fa-github"></i>
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+
+<!--==================== Project 3 ====================-->
+
+            <article class="project-card hover-lift">
+
+                <div class="project-image">
+
+                    <img src="assets/project_drive.jpg"
+                         alt="Holonomic Drive Bot">
+
+                    <div class="project-overlay"></div>
+
+                </div>
+
+                <div class="project-content">
+
+                    <h3>
+
+                        Holonomic Drive Bot
+
+                    </h3>
+
+                    <p>
+
+                        Coordinated a fleet of holonomic robots for glyph
+                        rendering using camera-based localization and ArUco
+                        markers,
+                        with real-time path adjustments
+                        and sub-10 cm tracking error.
+
+                    </p>
+
+                    <div class="project-tags">
+
+                        <span>ArUco</span>
+
+                        <span>Localization</span>
+
+                        <span>Multi-Robot</span>
+
+                    </div>
+
+                    <div class="project-footer">
+
+                        <div class="project-links">
+
+                            <a href="https://github.com/Srinjoy2002/eyrc_HB_3636" target="_blank">
+
+                                <i class="fab fa-github"></i>
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+
+<!--==================== Project 4 ====================-->
+
+            <article class="project-card hover-lift">
+
+                <div class="project-image">
+
+                    <img src="assets/project_sbb.jpg"
+                         alt="Self-Balancing Bot">
+
+                    <div class="project-overlay"></div>
+
+                </div>
+
+                <div class="project-content">
+
+                    <h3>
+
+                        Self-Balancing Bot
+
+                    </h3>
+
+                    <p>
+
+                        Self-balancing robot using an LQR controller and IMU
+                        fusion, capable of traversing slopes up to 15° with a
+                        stable 0.5° tilt error.
+
+                    </p>
+
+                    <div class="project-tags">
+
+                        <span>LQR</span>
+
+                        <span>IMU Fusion</span>
+
+                        <span>Control</span>
+
+                    </div>
+
+                    <div class="project-footer">
+
+                        <div class="project-links">
+
+                            <a href="https://github.com/Srinjoy2002/self-balancing-bot" target="_blank">
+
+                                <i class="fab fa-github"></i>
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!--=========================================================
+                    GITHUB
+==========================================================-->
+
+<section class="github">
+
+    <div class="container">
+
+        <div class="github-panel glass">
+
+            <div>
+
+                <span class="section-tag">
+
+                    Open Source
+
+                </span>
+
+                <h3>
+
+                    Research Software & Development
+
+                </h3>
+
+                <p>
+
+                    Alongside academic research,
+                    I develop simulation frameworks,
+                    robotics software,
+                    autonomous control algorithms,
+                    and open-source engineering tools.
+
+                </p>
+
+                <a href="https://github.com/yourusername"
+
+                   target="_blank"
+
+                   class="btn btn-primary">
+
+                    Visit GitHub
+
+                </a>
+
+            </div>
+
+            <div class="github-stats">
+
+                <div class="github-stat">
+
+                    <h2>
+
+                        25+
+
+                    </h2>
+
+                    <span>
+
+                        Projects
+
+                    </span>
+
+                </div>
+
+                <div class="github-stat">
+
+                    <h2>
+
+                        100+
+
+                    </h2>
+
+                    <span>
+
+                        Repositories
+
+                    </span>
+
+                </div>
+
+                <div class="github-stat">
+
+                    <h2>
+
+                        500+
+
+                    </h2>
+
+                    <span>
+
+                        Commits
+
+                    </span>
+
+                </div>
+
+                <div class="github-stat">
+
+                    <h2>
+
+                        ∞
+
+                    </h2>
+
+                    <span>
+
+                        Learning
+
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<!--=========================================================
+                    CONTACT
+==========================================================-->
+
+<section id="contact" class="contact">
+
+    <div class="container">
+
+        <div class="section-header fade-up">
+
+            <span class="section-tag">
+
+                Get In Touch
+
+            </span>
+
+            <h2>
+
+                Let's Build Something Meaningful
+
+            </h2>
+
+            <p>
+
+                Whether you're interested in research collaboration,
+                robotics, AI, control systems, or an engineering project,
+                I'm always open to discussing new ideas.
+
+            </p>
+
+        </div>
+
+        <div class="contact-grid">
+
+            <a href="mailto:your@email.com"
+               class="contact-card glass hover-lift">
+
+                <div class="contact-icon">
+
+                    <i class="fas fa-envelope"></i>
+
+                </div>
+
+                <h3>Email</h3>
+
+                <p>your@email.com</p>
+
+            </a>
+
+            <a href="https://github.com/yourusername"
+               target="_blank"
+               class="contact-card glass hover-lift">
+
+                <div class="contact-icon">
+
+                    <i class="fab fa-github"></i>
+
+                </div>
+
+                <h3>GitHub</h3>
+
+                <p>Research Projects</p>
+
+            </a>
+
+            <a href="https://linkedin.com/in/yourusername"
+               target="_blank"
+               class="contact-card glass hover-lift">
+
+                <div class="contact-icon">
+
+                    <i class="fab fa-linkedin"></i>
+
+                </div>
+
+                <h3>LinkedIn</h3>
+
+                <p>Professional Network</p>
+
+            </a>
+
+            <a href="https://scholar.google.com/"
+               target="_blank"
+               class="contact-card glass hover-lift">
+
+                <div class="contact-icon">
+
+                    <i class="fas fa-graduation-cap"></i>
+
+                </div>
+
+                <h3>Google Scholar</h3>
+
+                <p>Research Publications</p>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!--=========================================================
+                        FOOTER
+==========================================================-->
+
+<footer>
+
+    <div class="container">
+
+        <div class="footer-logo">
+
+            SC
+
+        </div>
+
+        <p class="footer-text">
+
+            Srinjoy Chakraborty
+
+            <br>
+
+            PhD Research Scholar
+
+            <br>
+
+            Department of Electrical Engineering
+
+            <br>
+
+            Indian Institute of Technology Kanpur
+
+        </p>
+
+        <div class="footer-social">
+
+            <a href="https://github.com/yourusername">
+
+                <i class="fab fa-github"></i>
+
+            </a>
+
+            <a href="https://linkedin.com/in/yourusername">
+
+                <i class="fab fa-linkedin"></i>
+
+            </a>
+
+            <a href="https://scholar.google.com/">
+
+                <i class="fas fa-graduation-cap"></i>
+
+            </a>
+
+            <a href="mailto:your@email.com">
+
+                <i class="fas fa-envelope"></i>
+
+            </a>
+
+        </div>
+
+        <div class="footer-copy">
+
+            © 2026 Srinjoy Chakraborty
+
+            <br>
+
+            Designed & Developed with HTML, CSS, JavaScript & GSAP
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+
+<!--=========================================================
+                    BACK TO TOP
+==========================================================-->
+
+<button id="backToTop" class="btn btn-primary" aria-label="Back to top">
+
+    <i class="fa-solid fa-arrow-up"></i>
+
+</button>
+
+
+
+<!--=========================================================
+                        LIBRARIES
+==========================================================-->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.min.js"></script>
+
+
+
+<!--=========================================================
+                        SCRIPT
+==========================================================-->
+
+<script src="js/scripts.js"></script>
+
 </body>
+
 </html>
