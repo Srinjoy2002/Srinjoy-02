@@ -38,6 +38,11 @@ for (const width of [320, 375, 390, 768, 1024, 1440]) {
     }));
     expect(dimensions.scroll, 'Horizontal overflow at ' + width + 'px').toBeLessThanOrEqual(dimensions.viewport + 1);
     if (width === 390 || width === 1440) {
+      for (const img of await page.locator('img').all()) {
+        await img.scrollIntoViewIfNeeded();
+        await img.evaluate(node => node.decode().catch(() => {}));
+      }
+      await page.evaluate(() => window.scrollTo(0, 0));
       await page.screenshot({ path: 'test-results/home-' + width + '.png', fullPage: true });
     }
   });
