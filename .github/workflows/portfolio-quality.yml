@@ -1,0 +1,30 @@
+name: Portfolio quality checks
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+permissions:
+  contents: read
+jobs:
+  browser-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install test dependencies
+        run: npm install --no-audit --no-fund
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Test mobile, desktop, links and accessibility behaviour
+        run: npm test
+      - name: Save browser screenshots and test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: portfolio-browser-audit
+          path: test-results/
+          retention-days: 14

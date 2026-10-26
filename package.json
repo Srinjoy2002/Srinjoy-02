@@ -1,0 +1,12 @@
+{
+  "name": "srinjoy-research-portfolio",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Browser smoke and responsive checks for a static GitHub Pages portfolio",
+  "scripts": {
+    "test": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.55.0"
+  }
+}
