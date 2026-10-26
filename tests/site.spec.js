@@ -46,7 +46,7 @@ for (const width of [320, 375, 390, 768, 1024, 1440]) {
 test('mobile menu opens, follows link and closes with Escape', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('/');
-  const toggle = page.getByRole('button', { name: 'Open navigation menu' });
+  const toggle = page.locator('#menuToggle');
   await toggle.click();
   await expect(toggle).toHaveAttribute('aria-expanded', 'true');
   await expect(page.getByRole('navigation', { name: 'Primary navigation' })).toBeVisible();
