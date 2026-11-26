@@ -3,7 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#0b1017">
+  <meta name="theme-color" content="#e3ddf0">
+  <script>
+  /* Auto theme: light 06:00–18:00, dark otherwise. A manual choice lasts until the next 6 am / 6 pm switch. */
+  (function(){var d=new Date(),h=d.getHours(),t=h>=6&&h<18?'light':'dark';try{var o=JSON.parse(localStorage.getItem('sc-theme-override')||'null');if(o&&o.until>Date.now()&&(o.t==='light'||o.t==='dark'))t=o.t}catch(e){}document.documentElement.setAttribute('data-theme',t);var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute('content',t==='dark'?'#1b2127':'#e3ddf0')})();
+  </script>
   <meta name="description" content="Srinjoy Chakraborty is a PhD researcher in Control & Automation at IIT Kanpur, working on swarm robotics, multi-agent coordination and autonomous systems.">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Srinjoy Chakraborty — Control, Swarms & Autonomous Systems">
@@ -15,7 +19,7 @@
   <link rel="icon" href="profile.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;0,9..144,900;1,9..144,600&family=Michroma&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Unbounded:wght@500;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"Person","name":"Srinjoy Chakraborty","url":"https://srinjoy2002.github.io/Srinjoy-02/","jobTitle":"PhD Research Scholar","affiliation":{"@type":"CollegeOrUniversity","name":"Indian Institute of Technology Kanpur"},"sameAs":["https://github.com/Srinjoy2002"],"knowsAbout":["Control Theory","Swarm Robotics","Multi-Agent Systems","Autonomous Systems"]}
@@ -30,6 +34,7 @@
   <div class="container nav-shell glass">
     <a class="brand" href="#home" aria-label="Srinjoy Chakraborty — home">SC<span>.</span></a>
     <span class="nav-context">RESEARCH PORTFOLIO <span class="nav-context-year">/ 2026</span></span>
+    <div class="glyph-clock" id="glyphClock" role="img" aria-label="Local time"><div class="gc-body"><div class="gc-matrix" id="gcMatrix" aria-hidden="true"></div><div class="gc-strip" id="gcStrip" aria-hidden="true"></div></div><span class="gc-mode" aria-hidden="true"><b id="gcMode">AUTO</b><span id="gcTheme">LIGHT</span></span></div>
     <button class="menu-toggle" id="menuToggle" type="button" aria-controls="siteNav" aria-expanded="false" aria-label="Open navigation menu"><span></span><span></span><span></span></button>
     <nav class="site-nav" id="siteNav" aria-label="Primary navigation">
       <a href="#about">About</a>
@@ -107,5 +112,25 @@
   </section>
 </main>
 <footer class="site-footer container"><div><a class="footer-brand" href="#home">SC<span>.</span></a><p>Srinjoy Chakraborty<br>Control &amp; Automation · IIT Kanpur</p></div><div class="footer-end"><a href="mailto:srinjoyc25@iitk.ac.in">Email ↗</a><a href="https://github.com/Srinjoy2002" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="assets/Srinjoy_CV.pdf" target="_blank" rel="noopener">CV ↗</a><span>© <span data-year>2026</span> Srinjoy Chakraborty</span></div></footer>
+<button class="theme-fab" id="themeToggle" type="button" aria-label="Switch to dark theme" title="Switch theme">
+  <svg viewBox="0 0 48 48" aria-hidden="true" focusable="false">
+    <defs><mask id="moonCut"><rect width="48" height="48" fill="#fff"/><circle cx="33" cy="17" r="11" fill="#000"/></mask></defs>
+    <g class="sun">
+      <g class="rays" stroke="var(--accent)" stroke-width="3" stroke-linecap="round"><path d="M24 4v4M24 40v4M4 24h4M40 24h4M9.9 9.9l2.8 2.8M35.3 35.3l2.8 2.8M9.9 38.1l2.8-2.8M35.3 12.7l2.8-2.8"/></g>
+      <circle cx="24" cy="24" r="12" fill="var(--accent)"/>
+      <g class="eyes" fill="var(--fab-face)"><circle cx="19.8" cy="22.5" r="1.7"/><circle cx="28.2" cy="22.5" r="1.7"/></g>
+      <path d="M20.5 27.2q3.5 3.6 7 0" fill="none" stroke="var(--fab-face)" stroke-width="1.8" stroke-linecap="round"/>
+      <circle cx="16.8" cy="26.6" r="2" fill="#ff5e7e" opacity=".55"/><circle cx="31.2" cy="26.6" r="2" fill="#ff5e7e" opacity=".55"/>
+    </g>
+    <g class="moon">
+      <circle cx="22" cy="26" r="14" fill="#d2d7de" mask="url(#moonCut)"/>
+      <path d="M14.2 27.2q1.7 1.6 3.4 0M20 31q1.7 1.6 3.4 0" fill="none" stroke="#1b2127" stroke-width="1.7" stroke-linecap="round"/>
+      <path d="M15.6 31.6q2.3 2.4 4.8 1" fill="none" stroke="#1b2127" stroke-width="1.5" stroke-linecap="round"/>
+      <circle cx="12.4" cy="30.2" r="1.7" fill="#d81b3e" opacity=".8"/>
+      <path class="twinkle" d="M38 24l1.1 2.8 2.9 1.1-2.9 1.1L38 32l-1.1-3-2.9-1.1 2.9-1.1z" fill="#ff4d6a"/>
+      <path class="twinkle b" d="M33.5 8.5l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z" fill="#d2d7de"/>
+    </g>
+  </svg>
+</button>
 </body>
 </html>
