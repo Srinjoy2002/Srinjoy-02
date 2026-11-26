@@ -68,3 +68,57 @@ test('reduced-motion setting disables smooth scrolling', async ({ page }) => {
   const behavior = await page.evaluate(() => getComputedStyle(document.documentElement).scrollBehavior);
   expect(behavior).toBe('auto');
 });
+
+test.describe('time-based theme', () => {
+  const at = (hh, mm = 0) => new Date(2026, 5, 15, hh, mm, 0);
+
+  test('light between 6 am and 6 pm, dark otherwise', async ({ page }) => {
+    for (const [hour, expected] of [[5, 'dark'], [6, 'light'], [12, 'light'], [17, 'light'], [18, 'dark'], [23, 'dark']]) {
+      await page.clock.install({ time: at(hour, hour === 17 ? 59 : 0) });
+      await page.goto('/');
+      await expect(page.locator('html')).toHaveAttribute('data-theme', expected);
+    }
+  });
+
+  test('glyph clock shows local time as dot-matrix digits', async ({ page }) => {
+    await page.clock.install({ time: at(14, 7) });
+    await page.goto('/');
+    await expect(page.locator('#glyphClock')).toHaveAttribute('aria-label', /14:07/);
+    // digit "1" lights 8 dots, "4" lights 9, "0" lights 12, "7" lights 7
+    const lit = await page.locator('.gc-digit').evaluateAll(n => n.map(d => d.querySelectorAll('i.on').length));
+    expect(lit).toEqual([8, 9, 12, 7]);
+  });
+
+  test('corner button overrides until the next switch and returns to auto', async ({ page }) => {
+    await page.clock.install({ time: at(10, 0) });
+    await page.goto('/');
+    const html = page.locator('html');
+    const fab = page.locator('#themeToggle');
+    await expect(html).toHaveAttribute('data-theme', 'light');
+    await expect(fab).toHaveAttribute('aria-label', 'Switch to dark theme');
+    await fab.click();
+    await expect(html).toHaveAttribute('data-theme', 'dark');
+    await expect(page.locator('#gcMode')).toHaveText('MANUAL');
+    await page.reload();
+    await expect(html).toHaveAttribute('data-theme', 'dark');
+    await fab.click();
+    await expect(html).toHaveAttribute('data-theme', 'light');
+    await expect(page.locator('#gcMode')).toHaveText('AUTO');
+  });
+
+  test('manual choice expires at the next scheduled switch', async ({ page }) => {
+    await page.clock.install({ time: at(17, 59) });
+    await page.goto('/');
+    await page.locator('#themeToggle').click();
+    await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
+    await page.clock.runFor(2 * 60 * 1000);
+    await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
+    await expect(page.locator('#gcMode')).toHaveText('AUTO');
+  });
+
+  test('theme controls exist on the projects page too', async ({ page }) => {
+    await page.goto('/projects.html');
+    await expect(page.locator('#themeToggle')).toBeVisible();
+    await expect(page.locator('.gc-digit')).toHaveCount(4);
+  });
+});
